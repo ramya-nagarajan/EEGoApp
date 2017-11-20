@@ -25,11 +25,9 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
     <TableLayout
-        android:layout_width="131dp"
-        android:layout_height="495dp"
-        android:stretchColumns="0,1"
-        tools:layout_editor_absoluteY="8dp"
-        tools:layout_editor_absoluteX="8dp">
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:stretchColumns="0,1">
         <TableRow
             android:layout_marginTop="82dp"
             android:layout_marginBottom="20dp">
@@ -37,8 +35,8 @@
                 android:id="@+id/learnMeditationText"
                 android:background="@drawable/learnmeditation"
                 android:text="Learn\nMeditation"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="160dp"
+                android:layout_height="200dp"
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
                 android:elevation="20dp"
@@ -55,8 +53,8 @@
                 android:id="@+id/reduceStressText"
                 android:text="Reduce Stress\n&amp; Anxiety"
                 android:background="@drawable/reducestress"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="160dp"
+                android:layout_height="200dp"
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
                 android:elevation="20dp"
@@ -75,8 +73,8 @@
                 android:id="@+id/improveFocusText"
                 android:text="Improve\n&amp; Focus"
                 android:background="@drawable/improvefocus"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="160dp"
+                android:layout_height="200dp"
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
                 android:elevation="20dp"
@@ -93,8 +91,8 @@
                 android:id="@+id/sleepBetterText"
                 android:text="Sleep\n&amp; Better"
                 android:background="@drawable/sleepbetter"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="160dp"
+                android:layout_height="200dp"
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
                 android:elevation="20dp"
