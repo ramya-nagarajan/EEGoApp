@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="edu.iu.eego.ConnectionActivity"
+    tools:showIn="@layout/activity_connection">
+
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        tools:context="edu.iu.eego.ConnectionActivity2"
+        android:background="@drawable/bg2"
+        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintBottom_creator="1"
+        android:layout_marginStart="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginEnd="0dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="0dp"
+        tools:layout_constraintLeft_creator="1"
+        android:layout_marginBottom="0dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+        <TextView
+            android:id="@+id/sessionLength"
+            android:layout_width="118dp"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/sessionLengthSeekBar"
+            android:text="Session Length"
+            android:textAlignment="center"
+            android:layout_marginTop="50dp"
+            android:textColor="#ffffff"
+            android:textStyle="bold"
+            tools:layout_editor_absoluteX="43dp"
+            tools:layout_editor_absoluteY="83dp" />
+
+        <SeekBar
+            android:id="@+id/sessionLengthSeekBar"
+            android:layout_width="240dp"
+            android:layout_height="20dp"
+            android:layout_marginRight="60dp"
+            android:layout_marginLeft="60dp"
+            android:layout_below="@+id/sessionLength"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="15dp"
+            android:backgroundTint="#42000000"
+            android:thumbTint="#f5a623"
+            tools:layout_editor_absoluteX="60dp" />
+
+        <TextView
+            android:id="@+id/noOfMinutes"
+            android:layout_width="90dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/sessionLengthSeekBar"
+            android:text="12 minutes"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="210dp"
+            android:textAlignment="center"
+            android:textColor="#ffffff"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/currentMood"
+            android:layout_width="118dp"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/sessionLengthSeekBar"
+            android:layout_below="@+id/sessionLengthSeekBar"
+            android:layout_marginTop="50dp"
+            android:text="Current Mood"
+            android:textAlignment="center"
+            android:textColor="#ffffff"
+            android:textStyle="bold" />
+
+        <SeekBar
+            android:id="@+id/currentMoodSeekBar"
+            android:layout_width="240dp"
+            android:layout_height="20dp"
+            android:layout_below="@+id/currentMood"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="15dp"
+            android:backgroundTint="#42000000"
+            android:thumbTint="#f5a623"
+            tools:layout_editor_absoluteX="60dp" />
+
+        <TextView
+            android:id="@+id/currentMoodView"
+            android:layout_width="90dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/currentMoodSeekBar"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="220dp"
+            android:text="Happy"
+            android:textAlignment="center"
+            android:textColor="#ffffff"
+            android:textSize="12sp" />
+
+        <Button
+            android:id="@+id/connectButton"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_below="@+id/currentMoodSeekBar"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="118dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:background="#f5a623"
+            android:text="Connect Headset"
+            android:textAllCaps="false"
+            android:textColor="#ffffff"
+            android:onClick="showMuseHeadSets"
+            android:textSize="14sp" />
+
+        <Button
+            android:id="@+id/startButton"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_below="@+id/connectButton"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="90dp"
+            android:width="150dp"
+            android:background="#acacac"
+            android:text="Start"
+            android:textAllCaps="false"
+            android:textColor="#808080"
+            android:textSize="14sp" />
+
+    </RelativeLayout>
+</android.support.constraint.ConstraintLayout>
