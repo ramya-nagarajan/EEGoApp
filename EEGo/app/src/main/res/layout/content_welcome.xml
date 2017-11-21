@@ -65,13 +65,13 @@
                 android:textSize="16sp"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="15dp"
-                android:onClick="showConnectionActivity"
+                android:onClick="showPlansActivity"
                 />
         </TableRow>
         <TableRow>
             <TextView
                 android:id="@+id/improveFocusText"
-                android:text="Improve\n&amp; Focus"
+                android:text="Improve\n Focus"
                 android:background="@drawable/improvefocus"
                 android:layout_width="160dp"
                 android:layout_height="200dp"
@@ -85,11 +85,11 @@
                 android:textSize="16sp"
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="5dp"
-                android:onClick="showConnectionActivity"
+                android:onClick="showPlansActivity"
                 />
             <TextView
                 android:id="@+id/sleepBetterText"
-                android:text="Sleep\n&amp; Better"
+                android:text="Sleep\n Better"
                 android:background="@drawable/sleepbetter"
                 android:layout_width="160dp"
                 android:layout_height="200dp"
@@ -103,7 +103,7 @@
                 android:textSize="16sp"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="15dp"
-                android:onClick="showConnectionActivity"
+                android:onClick="showPlansActivity"
                 />
         </TableRow>
     </TableLayout>
