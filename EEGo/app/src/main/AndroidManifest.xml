@@ -33,6 +33,14 @@
                 android:value="edu.iu.eego.WelcomeActivity" />
         </activity>
         <activity
+            android:name=".DisplayPlansActivity"
+            android:label="Reduce Stress &amp; Anxiety"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="edu.iu.eego.WelcomeActivity" />
+        </activity>
+        <activity
             android:name=".CalibrationActivity"
             android:label="@string/title_activity_calibration"
             android:theme="@style/AppTheme.NoActionBar"></activity>
