@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="edu.iu.eego.DisplayPlansActivity"
+    tools:showIn="@layout/activity_display_plans">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+            <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#606060"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior"
+                tools:context="edu.iu.eego.DisplayPlansActivity">
+
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp">
+
+                <TextView
+                    android:id="@+id/recommendedPlans"
+                    android:layout_width="wrap_content"
+                    android:layout_height="28dp"
+                    android:layout_marginLeft="27dp"
+                    android:fontFamily="Roboto-Regular"
+                    android:lineSpacingExtra="14sp"
+                    android:text="Recommended Plans:"
+                    android:textColor="#ffffff"
+                    android:textSize="14sp"
+                    android:textStyle="normal" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/plan1Layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="70dp">
+
+                <TextView
+                    android:id="@+id/plan1"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:background="@drawable/plan_1_image"
+                    android:paddingLeft="30dp"
+                    android:paddingTop="10dp"
+                    android:text="A Life of Calm"
+                    android:textColor="#ffffff"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/plan1Sessions"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="110dp"
+                    android:paddingLeft="30dp"
+                    android:text="20 Sessions"
+                    android:textColor="#ffffff"
+                    android:textSize="18sp"
+                    android:textStyle="italic" />
+
+
+                <Button
+                    android:id="@+id/beginPlan1"
+                    android:layout_width="100dp"
+                    android:layout_height="35dp"
+                    android:layout_alignBottom="@+id/plan1Sessions"
+                    android:layout_alignEnd="@+id/plan1"
+                    android:layout_marginEnd="30dp"
+                    android:background="#f5a623"
+                    android:text="Begin"
+                    android:textAllCaps="false"
+                    android:textColor="#ffffff" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/plan2Layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/plan1Layout"
+                android:layout_marginTop="15dp">
+
+                <TextView
+                    android:id="@+id/plan2"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:background="@drawable/plan_2_image"
+                    android:paddingLeft="30dp"
+                    android:paddingTop="10dp"
+                    android:text="Letting Go of Anxiousness"
+                    android:textColor="#ffffff"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/plan2Sessions"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="110dp"
+                    android:paddingLeft="30dp"
+                    android:text="10 Sessions"
+                    android:textColor="#ffffff"
+                    android:textSize="18sp"
+                    android:textStyle="italic" />
+
+
+                <Button
+                    android:id="@+id/beginPlan2"
+                    android:layout_width="100dp"
+                    android:layout_height="35dp"
+                    android:layout_alignBottom="@+id/plan2Sessions"
+                    android:layout_alignEnd="@+id/plan2"
+                    android:layout_marginEnd="30dp"
+                    android:background="#f5a623"
+                    android:text="Begin"
+                    android:textAllCaps="false"
+                    android:textColor="#ffffff" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/plan3Layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/plan2Layout"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp">
+
+                <TextView
+                    android:id="@+id/plan3"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:background="@drawable/plan_3_image"
+                    android:paddingLeft="30dp"
+                    android:paddingTop="10dp"
+                    android:text="No Fear"
+                    android:textColor="#ffffff"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/plan3Sessions"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="110dp"
+                    android:paddingLeft="30dp"
+                    android:text="20 Sessions"
+                    android:textColor="#ffffff"
+                    android:textSize="18sp"
+                    android:textStyle="italic" />
+
+
+                <Button
+                    android:id="@+id/beginPlan3"
+                    android:layout_width="100dp"
+                    android:layout_height="35dp"
+                    android:layout_alignBottom="@+id/plan3Sessions"
+                    android:layout_alignEnd="@+id/plan3"
+                    android:layout_marginEnd="30dp"
+                    android:background="#f5a623"
+                    android:text="Begin"
+                    android:textAllCaps="false"
+                    android:textColor="#ffffff" />
+            </RelativeLayout>
+
+
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</android.support.constraint.ConstraintLayout>

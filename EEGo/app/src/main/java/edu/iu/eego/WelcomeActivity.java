@@ -11,6 +11,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
+import android.widget.Toast;
 
 public class WelcomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -34,6 +36,13 @@ public class WelcomeActivity extends AppCompatActivity
 
     public void showConnectionActivity(View view) {
         Intent intent = new Intent(getApplicationContext(), ConnectionActivity.class);
+        startActivity(intent);
+    }
+
+    public void showPlansActivity(View view) {
+        TextView textView = (TextView) view;
+        Intent intent = new Intent(getApplicationContext(), DisplayPlansActivity.class);
+        intent.putExtra("buttonSelected",textView.getText()+"");
         startActivity(intent);
     }
 
