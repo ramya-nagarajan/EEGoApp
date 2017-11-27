@@ -16,4 +16,12 @@
     <string name="title_activity_display_plans">DisplayPlansActivity</string>
     <string name="title_activity_plan_information">PlanInformationActivity</string>
     <string name="title_activity_calibration">CalibrationActivity</string>
+    <string name="title_activity_report">ReportActivity</string>
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
+    <string name="tab_text_3">Tab 3</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+    <string name="title_activity_profile">ProfileActivity</string>
+    <string name="title_activity_community_challenge">CommunityChallengeActivity</string>
+    <string name="title_activity_progress">ProgressActivity</string>
 </resources>
