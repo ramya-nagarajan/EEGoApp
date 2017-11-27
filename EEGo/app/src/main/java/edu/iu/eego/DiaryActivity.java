@@ -103,22 +103,13 @@ public class DiaryActivity extends Fragment {
         layoutParams2.setMargins(15,510,15,484);
         desc.setLayoutParams(layoutParams);*/
 
-        ImageButton dayDescription = new ImageButton(rootView.getContext());
+        TextView dayDescription = new TextView(rootView.getContext());
         dayDescription.generateViewId();
-        dayDescription.setBackgroundResource(R.drawable.ic_ab_front_white);
-        //dayDescription.setTextColor(Color.parseColor("#7f000000"));
-        dayDescription.setPadding(200,200,32,10);
-        dayDescription.setElevation(20);
-//        dayDescription.setHeight(9);
-//        dayDescription.setWidth(9);
-//        dayDescription.setBackgroundColor(Color.parseColor("#80000000"));
-//        Resources r = getResources();
-//        float height = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 24, r.getDisplayMetrics());
-//        float width = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 9, r.getDisplayMetrics());
-//        dayDescription.setHeight((int)height);
-//        dayDescription.setWidth((int)width);
-//        dayDescription.setLayoutParams(layoutParams);
-
+        dayDescription.setText(">");
+        dayDescription.setTextSize(18);
+        dayDescription.setTextColor(Color.parseColor("#ffffff"));
+        dayDescription.setPadding(950,180,20,10);
+        dayDescription.setGravity(70);
 
         relLayout.addView(text1);
         relLayout.addView(date_text);
@@ -126,9 +117,8 @@ public class DiaryActivity extends Fragment {
         relLayout.addView(moodBefore);
         relLayout.addView(after);
         relLayout.addView(moodAfter);
-        relLayout.addView(dayDescription);
-
         relLayout.addView(desc);
+        relLayout.addView(dayDescription);
         //Toast.makeText(rootView.getContext(), "this is fragment 2 id: "+rootView.findViewById(R.id.relLayoutFragment2), Toast.LENGTH_SHORT).show();
         return rootView;
     }
