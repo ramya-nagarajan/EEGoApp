@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="edu.iu.eego.PlanInformationActivity"
+    tools:showIn="@layout/activity_plan_information">
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/dark_face_bkd">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:id="@+id/textDescription"
+        android:text="Description"
+        android:textSize="14sp"
+        android:textColor="#ffffff"
+        android:layout_marginTop="35dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="36.2dp"
+        />
+    <TextView
+        android:layout_width="303.8dp"
+        android:layout_height="200dp"
+        android:id="@+id/textDesc"
+        android:text="In today’s world, it is easy to fall prey to the speed and stresses of everyday life. We’re more connected than ever before, which leads to more stress and anxiety than ever before. Luckily, meditation has been proven to combat the negative effects of our new lifestyle. With this plan, you’ll dive into 20 days of guided meditation that will teach you how to calm your mind, which translates to a calmer life. Enjoy! "
+        android:textSize="12sp"
+        android:textColor="#ffffff"
+        android:layout_marginTop="70dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="36.2dp"
+        />
+
+    <TextView
+        android:layout_width="120dp"
+        android:layout_height="28dp"
+        android:id="@+id/sessionCount"
+        android:text="0/20 sessions"
+        android:textColor="#ffffff"
+        android:layout_below="@+id/textDesc"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="20dp"/>
+
+    <HorizontalScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/dayScroll"
+        android:fillViewport="false"
+        android:scrollbars="horizontal"
+        android:layout_marginTop="340dp"
+        >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/day1"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:layout_below="@+id/sessionCount"
+                android:layout_margin="10dp"
+                android:layout_marginTop="418dp"
+                android:onClick="showBorders"
+                android:padding="5dp"
+                android:text="Day 1"
+                android:textAllCaps="false">
+
+            </Button>
+
+            <Button
+                android:id="@+id/day2"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:layout_below="@+id/sessionCount"
+                android:layout_margin="10dp"
+                android:layout_marginTop="380dp"
+                android:onClick="showBorders"
+                android:padding="5dp"
+                android:text="Day 2"
+                android:textAllCaps="false"></Button>
+
+            <Button
+                android:id="@+id/day3"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:layout_below="@+id/sessionCount"
+                android:layout_margin="10dp"
+                android:layout_marginTop="418dp"
+                android:onClick="showBorders"
+                android:padding="5dp"
+                android:text="Day 3"
+                android:textAllCaps="false"></Button>
+
+            <Button
+                android:id="@+id/day4"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:layout_below="@+id/sessionCount"
+                android:layout_margin="10dp"
+                android:layout_marginTop="418dp"
+                android:onClick="showBorders"
+                android:padding="5dp"
+                android:text="Day 4"
+                android:textAllCaps="false"></Button>
+
+            <Button
+                android:id="@+id/day5"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:layout_below="@+id/sessionCount"
+                android:layout_margin="10dp"
+                android:layout_marginTop="418dp"
+                android:onClick="showBorders"
+                android:padding="5dp"
+                android:text="Day 5"
+                android:textAllCaps="false"></Button>
+
+            <Button
+                android:id="@+id/day6"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:layout_below="@+id/sessionCount"
+                android:layout_margin="10dp"
+                android:layout_marginTop="418dp"
+                android:onClick="showBorders"
+                android:padding="5dp"
+                android:text="Day 6"
+                android:textAllCaps="false"></Button>
+
+            <Button
+                android:id="@+id/day7"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:layout_below="@+id/sessionCount"
+                android:layout_margin="10dp"
+                android:layout_marginTop="418dp"
+                android:onClick="showBorders"
+                android:padding="5dp"
+                android:text="Day 7"
+                android:textAllCaps="false"></Button>
+
+            <Button
+                android:id="@+id/day8"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:layout_below="@+id/sessionCount"
+                android:layout_margin="10dp"
+                android:layout_marginTop="418dp"
+                android:onClick="showBorders"
+                android:padding="5dp"
+                android:text="Day 8"
+                android:textAllCaps="false"></Button>
+
+            <Button
+                android:id="@+id/day9"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:layout_below="@+id/sessionCount"
+                android:layout_margin="10dp"
+                android:layout_marginTop="418dp"
+                android:onClick="showBorders"
+                android:padding="5dp"
+                android:text="Day 9"
+                android:textAllCaps="false"></Button>
+
+            <Button
+                android:id="@+id/day10"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:layout_below="@+id/sessionCount"
+                android:layout_margin="10dp"
+                android:layout_marginTop="418dp"
+                android:onClick="showBorders"
+                android:padding="5dp"
+                android:text="Day 10"
+                android:textAllCaps="false"></Button>
+
+            <Button
+                android:id="@+id/day11"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:layout_below="@+id/sessionCount"
+                android:layout_margin="10dp"
+                android:layout_marginTop="418dp"
+                android:onClick="showBorders"
+                android:padding="5dp"
+                android:text="Day 11"
+                android:textAllCaps="false"></Button>
+
+            <Button
+                android:id="@+id/day12"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:layout_below="@+id/sessionCount"
+                android:layout_margin="10dp"
+                android:layout_marginTop="418dp"
+                android:onClick="showBorders"
+                android:padding="5dp"
+                android:text="Day 12"
+                android:textAllCaps="false"></Button>
+
+            <Button
+                android:id="@+id/day13"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:layout_below="@+id/sessionCount"
+                android:layout_margin="10dp"
+                android:layout_marginTop="418dp"
+                android:onClick="showBorders"
+                android:padding="5dp"
+                android:text="Day 13"
+                android:textAllCaps="false"></Button>
+
+            <Button
+                android:id="@+id/day14"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:layout_below="@+id/sessionCount"
+                android:layout_margin="10dp"
+                android:layout_marginTop="418dp"
+                android:onClick="showBorders"
+                android:padding="5dp"
+                android:text="Day 14"
+                android:textAllCaps="false"></Button>
+
+            <Button
+                android:id="@+id/day15"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:layout_below="@+id/sessionCount"
+                android:layout_margin="10dp"
+                android:layout_marginTop="418dp"
+                android:onClick="showBorders"
+                android:padding="5dp"
+                android:text="Day 15"
+                android:textAllCaps="false"></Button>
+
+            <Button
+                android:id="@+id/day16"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:layout_below="@+id/sessionCount"
+                android:layout_margin="10dp"
+                android:layout_marginTop="418dp"
+                android:onClick="showBorders"
+                android:padding="5dp"
+                android:text="Day 16"
+                android:textAllCaps="false"></Button>
+
+            <Button
+                android:id="@+id/day17"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:layout_below="@+id/sessionCount"
+                android:layout_margin="10dp"
+                android:layout_marginTop="418dp"
+                android:onClick="showBorders"
+                android:padding="5dp"
+                android:text="Day 17"
+                android:textAllCaps="false"></Button>
+
+            <Button
+                android:id="@+id/day18"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:layout_below="@+id/sessionCount"
+                android:layout_margin="10dp"
+                android:layout_marginTop="418dp"
+                android:onClick="showBorders"
+                android:padding="5dp"
+                android:text="Day 18"
+                android:textAllCaps="false"></Button>
+
+            <Button
+                android:id="@+id/day19"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:layout_below="@+id/sessionCount"
+                android:layout_margin="10dp"
+                android:layout_marginTop="418dp"
+                android:onClick="showBorders"
+                android:padding="5dp"
+                android:text="Day 19"
+                android:textAllCaps="false"></Button>
+
+            <Button
+                android:id="@+id/day20"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:layout_below="@+id/sessionCount"
+                android:layout_margin="10dp"
+                android:layout_marginTop="418dp"
+                android:onClick="showBorders"
+                android:padding="5dp"
+                android:text="Day 20"
+                android:textAllCaps="false"></Button>
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <Button
+        android:id="@+id/startDay"
+        android:layout_width="150dp"
+        android:layout_height="45dp"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="450dp"
+        android:background="#f5a623"
+        android:visibility="invisible"
+        android:onClick="showProfileActivity"
+        android:text="Start"
+        android:textAllCaps="false"
+        android:textColor="#ffffff">
+
+    </Button>
+</RelativeLayout>
+</android.support.constraint.ConstraintLayout>

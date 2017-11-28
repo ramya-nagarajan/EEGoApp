@@ -1,0 +1,265 @@
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraintLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="edu.iu.eego.UserProfileActivity">
+
+    <!--<TextView-->
+        <!--android:id="@+id/section_label"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginBottom="@dimen/activity_vertical_margin"-->
+        <!--android:layout_marginEnd="@dimen/activity_horizontal_margin"-->
+        <!--android:layout_marginStart="@dimen/activity_horizontal_margin"-->
+        <!--android:layout_marginTop="@dimen/activity_vertical_margin"-->
+        <!--app:layout_constraintLeft_toLeftOf="parent"-->
+        <!--app:layout_constraintTop_toTopOf="@+id/constraintLayout"-->
+        <!--tools:layout_constraintLeft_creator="1"-->
+        <!--tools:layout_constraintTop_creator="1" />-->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/relLayoutFragment1"
+                android:background="#525252"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior"
+                tools:context="edu.iu.eego.ProfileActivity">
+
+                <ImageView
+                    android:layout_width="52dp"
+                    android:layout_height="52dp"
+                    android:src="@drawable/profile"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginLeft="30dp"
+                    android:id="@+id/profilePic"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Ryan Griggs"
+                    android:id="@+id/name"
+                    android:layout_marginLeft="108dp"
+                    android:layout_marginTop="16dp"
+                    android:textColor="#ffffff"
+                    android:textSize="36sp"
+                    android:lineSpacingExtra="-20sp"
+                    />
+
+                <!---header ends here -->
+
+                <ImageView
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:id="@+id/clock"
+                    android:src="@drawable/clock"
+                    android:layout_marginTop="35dp"
+                    android:layout_marginLeft="45dp"
+                    android:layout_below="@+id/profilePic"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/totalMinutes"
+                    android:layout_marginTop="20dp"
+                    android:text="189"
+                    android:textSize="36sp"
+                    android:lineSpacingExtra="-20sp"
+                    android:textColor="#ffffff"
+                    android:layout_marginLeft="115dp"
+                    android:layout_alignBaseline="@+id/clock"
+                    android:layout_below="@+id/name"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Total Minutes"
+                    android:textSize="12sp"
+                    android:layout_marginLeft="115dp"
+                    android:textColor="#ffffff"
+                    android:layout_marginTop="0dp"
+                    android:layout_below="@+id/totalMinutes"/>
+
+                <ImageView
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:src="@drawable/timer"
+                    android:layout_marginTop="47dp"
+                    android:layout_marginLeft="45dp"
+                    android:layout_below="@+id/clock"
+                    android:id="@+id/timer"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/avgMinutesPerSession"
+                    android:layout_marginTop="30dp"
+                    android:text="11.5"
+                    android:textSize="36sp"
+                    android:lineSpacingExtra="-20sp"
+                    android:textColor="#ffffff"
+                    android:layout_marginLeft="115dp"
+                    android:layout_alignBaseline="@+id/timer"
+                    android:layout_below="@+id/totalMinutes"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Avg. Minutes/ Session"
+                    android:textSize="12sp"
+                    android:layout_marginLeft="115dp"
+                    android:textColor="#ffffff"
+                    android:layout_marginTop="0dp"
+                    android:layout_below="@+id/avgMinutesPerSession"/>
+
+                <ImageView
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:src="@drawable/fitness"
+                    android:layout_marginTop="47dp"
+                    android:layout_marginLeft="45dp"
+                    android:layout_below="@+id/timer"
+                    android:id="@+id/fitness"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/recoveries"
+                    android:layout_marginTop="30dp"
+                    android:text="67"
+                    android:textSize="36sp"
+                    android:lineSpacingExtra="-20sp"
+                    android:textColor="#ffffff"
+                    android:layout_marginLeft="115dp"
+                    android:layout_alignBaseline="@+id/fitness"
+                    android:layout_below="@+id/avgMinutesPerSession"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Recoveries"
+                    android:id="@+id/rec"
+                    android:textSize="12sp"
+                    android:layout_marginLeft="115dp"
+                    android:textColor="#ffffff"
+                    android:layout_marginTop="0dp"
+                    android:layout_below="@+id/recoveries"/>
+                <!-- set 3 ends-->
+                <ImageView
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:src="@drawable/headset"
+                    android:layout_marginTop="47dp"
+                    android:layout_marginLeft="45dp"
+                    android:layout_below="@+id/fitness"
+                    android:id="@+id/headset"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/totalSessions"
+                    android:layout_marginTop="30dp"
+                    android:text="25"
+                    android:textSize="36sp"
+                    android:lineSpacingExtra="-20sp"
+                    android:textColor="#ffffff"
+                    android:layout_marginLeft="115dp"
+                    android:layout_below="@+id/recoveries"
+                    android:layout_alignBaseline="@+id/headset"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Total Sessions"
+                    android:id="@+id/sessions"
+                    android:textSize="12sp"
+                    android:layout_marginLeft="115dp"
+                    android:textColor="#ffffff"
+                    android:layout_marginTop="0dp"
+                    android:layout_below="@+id/totalSessions"/>
+                <!-- set 4 ends here-->
+                <ImageView
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:src="@drawable/calendar"
+                    android:layout_marginTop="47dp"
+                    android:layout_marginLeft="45dp"
+                    android:layout_below="@+id/headset"
+                    android:id="@+id/calendar"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/days"
+                    android:layout_marginTop="30dp"
+                    android:text="21"
+                    android:textSize="36sp"
+                    android:lineSpacingExtra="-20sp"
+                    android:textColor="#ffffff"
+                    android:layout_marginLeft="115dp"
+                    android:layout_below="@+id/totalSessions"
+                    android:layout_alignBaseline="@+id/calendar"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Total Days"
+                    android:textSize="12sp"
+                    android:layout_marginLeft="115dp"
+                    android:textColor="#ffffff"
+                    android:layout_marginTop="0dp"
+                    android:layout_below="@+id/days"/>
+                <!-- set 5 ends here-->
+
+                <ImageView
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:src="@drawable/graph"
+                    android:layout_marginTop="47dp"
+                    android:layout_marginLeft="45dp"
+                    android:layout_below="@+id/calendar"
+                    android:id="@+id/graph"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/progress"
+                    android:layout_marginTop="30dp"
+                    android:text="35%"
+                    android:textSize="36sp"
+                    android:lineSpacingExtra="-20sp"
+                    android:textColor="#ffffff"
+                    android:layout_marginLeft="115dp"
+                    android:layout_below="@+id/days"
+                    android:layout_alignBaseline="@+id/graph"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Total Calm Time"
+                    android:textSize="12sp"
+                    android:layout_marginLeft="115dp"
+                    android:textColor="#ffffff"
+                    android:layout_marginTop="0dp"
+                    android:layout_below="@+id/progress"
+                    android:layout_marginBottom="60dp"/>
+                <!-- set 6 ends here-->
+            </RelativeLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+
+
+</android.support.constraint.ConstraintLayout>

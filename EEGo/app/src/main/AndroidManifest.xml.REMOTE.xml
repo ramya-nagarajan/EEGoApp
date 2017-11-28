@@ -42,7 +42,7 @@
         </activity>
         <activity
             android:name=".CalibrationActivity"
-            android:label="Headset Connection"
+            android:label="@string/title_activity_calibration"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".PlanInformationActivity"
@@ -69,11 +69,7 @@
                 android:value="edu.iu.eego.WelcomeActivity" />
         </activity>
         <activity
-            android:name=".SessionActivity"
-            android:label="@string/title_activity_session"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
-        <activity android:name=".ProgressActivity"
+            android:name=".ProgressActivity"
             android:label="@string/title_activity_progress"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>

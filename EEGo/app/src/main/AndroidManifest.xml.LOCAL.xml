@@ -43,26 +43,6 @@
         <activity
             android:name=".CalibrationActivity"
             android:label="Headset Connection"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".PlanInformationActivity"
-            android:label="A Life of Calm "
-            android:theme="@style/AppTheme.NoActionBar">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="edu.iu.eego.DisplayPlansActivity" />
-        </activity>
-        <activity
-            android:name=".ProfileActivity"
-            android:label="Profile"
-            android:theme="@style/AppTheme.NoActionBar">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="edu.iu.eego.PlanInformationActivity" />
-        </activity>
-        <activity
-            android:name=".CommunityChallengeActivity"
-            android:label="EEGo"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -71,10 +51,6 @@
         <activity
             android:name=".SessionActivity"
             android:label="@string/title_activity_session"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
-        <activity android:name=".ProgressActivity"
-            android:label="@string/title_activity_progress"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
