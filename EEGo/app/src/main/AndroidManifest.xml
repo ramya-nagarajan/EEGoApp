@@ -42,7 +42,15 @@
         </activity>
         <activity
             android:name=".CalibrationActivity"
-            android:label="@string/title_activity_calibration"
+            android:label="Headset Connection"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="edu.iu.eego.WelcomeActivity" />
+        </activity>
+        <activity
+            android:name=".SessionActivity"
+            android:label="@string/title_activity_session"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

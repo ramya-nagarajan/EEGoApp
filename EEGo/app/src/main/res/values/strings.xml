@@ -16,4 +16,5 @@
     <string name="title_activity_display_plans">DisplayPlansActivity</string>
     <string name="title_activity_plan_information">PlanInformationActivity</string>
     <string name="title_activity_calibration">CalibrationActivity</string>
+    <string name="title_activity_session">SessionActivity</string>
 </resources>

@@ -7,6 +7,7 @@ import android.app.Dialog;
 import android.bluetooth.BluetoothAdapter;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
@@ -74,12 +75,9 @@ public class ConnectionActivity extends AppCompatActivity implements View.OnClic
 
     private ConnectionListener connectionListener;
 
-    private final Handler handler = new Handler();
-
     public void receiveMuseConnectionPacket(final MuseConnectionPacket p, final Muse muse) {
 
         final ConnectionState current = p.getCurrentConnectionState();
-
         // Format a message to show the change of connection state in the UI.
         final String status = p.getPreviousConnectionState() + " -> " + current;
         Log.i(TAG, status);
@@ -94,13 +92,16 @@ public class ConnectionActivity extends AppCompatActivity implements View.OnClic
             startBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Button startBtn = (Button) v;
-                    startBtn.setText("Started");
+                    Intent intent = new Intent(getApplicationContext(), CalibrationActivity.class);
+                    intent.putExtra("museName", muse.getName());
+                    startActivity(intent);
+
                 }
             });
         } else if(current == ConnectionState.DISCONNECTED) {
             Log.i(TAG, "Muse disconnected:" + muse.getName());
             Toast.makeText(context, "Connection State:" + muse.getConnectionState(), Toast.LENGTH_SHORT).show();
+            this.muse.unregisterAllListeners();
             this.muse = null;
         }
     }
@@ -116,7 +117,7 @@ public class ConnectionActivity extends AppCompatActivity implements View.OnClic
         dialog.setContentView(R.layout.muse_headsets_dialog);
 
         // set the custom dialog components - text, image and button
-        LinearLayout linearLayout = (LinearLayout) dialog.findViewById(R.id.museHeadSetLayout);
+        final LinearLayout linearLayout = (LinearLayout) dialog.findViewById(R.id.museHeadSetLayout);
         linearLayout.removeAllViews();
         int i = 0;
         for(Muse m:list) {
@@ -135,6 +136,7 @@ public class ConnectionActivity extends AppCompatActivity implements View.OnClic
                 }
             });
             linearLayout.addView(text1);
+            i++;
         }
 
         Button dialogRefreshButton = (Button) dialog.findViewById(R.id.refreshBtn);
@@ -144,10 +146,12 @@ public class ConnectionActivity extends AppCompatActivity implements View.OnClic
             public void onClick(View v) {
                 manager.stopListening();
                 manager.startListening();
+                linearLayout.removeAllViews();
             }
         });
-
-        dialog.show();
+        if(!dialog.isShowing()) {
+            dialog.show();
+        }
     }
 
     public void onSelectMuseHeadSet(View v) {
@@ -172,7 +176,6 @@ public class ConnectionActivity extends AppCompatActivity implements View.OnClic
             // receive data packets of that type.
             muse.unregisterAllListeners();
             muse.registerConnectionListener(connectionListener);
-
         }
         // Initiate a connection to the headband and stream the data asynchronously.
         muse.runAsynchronously();
@@ -273,7 +276,7 @@ public class ConnectionActivity extends AppCompatActivity implements View.OnClic
         });
         SeekBar seekBar2 = (SeekBar) findViewById(R.id.currentMoodSeekBar);
         seekBar2.setProgress(0);
-        seekBar2.setMax(3);
+        seekBar2.setMax(9);
         final TextView currentMoodView = (TextView)findViewById(R.id.currentMoodView);
         currentMoodView.setText("Happy");
         seekBar2.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
@@ -281,13 +284,23 @@ public class ConnectionActivity extends AppCompatActivity implements View.OnClic
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 if(progress == 0) {
-                    currentMoodView.setText("Happy");
+                    currentMoodView.setText("Loving");
                 } else if(progress == 1) {
-                    currentMoodView.setText("Relaxed");
+                    currentMoodView.setText("Excited");
                 } else if(progress == 2) {
-                    currentMoodView.setText("Angry");
+                    currentMoodView.setText("Happy");
                 } else if(progress == 3) {
-                    currentMoodView.setText("Frustrated");
+                    currentMoodView.setText("Calm");
+                } else if(progress == 4) {
+                    currentMoodView.setText("Neutral");
+                } else if(progress == 5) {
+                    currentMoodView.setText("Sad");
+                } else if(progress == 6) {
+                    currentMoodView.setText("Anxious");
+                } else if(progress == 7) {
+                    currentMoodView.setText("Angry");
+                } else if(progress == 8) {
+                    currentMoodView.setText("Depressed");
                 }
 
             }
@@ -333,5 +346,10 @@ public class ConnectionActivity extends AppCompatActivity implements View.OnClic
     @Override
     public void onClick(View v) {
 
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
     }
 }
