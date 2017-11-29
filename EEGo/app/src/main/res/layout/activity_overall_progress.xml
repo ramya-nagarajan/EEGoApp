@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="edu.iu.eego.ProfileActivity">
+    tools:context="edu.iu.eego.OverallProgressActivity">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appbar"
@@ -21,9 +21,10 @@
             android:layout_height="?attr/actionBarSize"
             android:layout_weight="1"
             android:background="?attr/colorPrimary"
+            android:textAlignment="center"
             app:layout_scrollFlags="scroll|enterAlways"
             app:popupTheme="@style/AppTheme.PopupOverlay"
-            app:title="Profile">
+            app:title="Your Progress">
 
         </android.support.v7.widget.Toolbar>
 
@@ -32,44 +33,32 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#eb9811"
-            app:tabIndicatorColor="@android:color/white"
+            app:tabIndicatorColor="#ffffff"
             app:tabIndicatorHeight="10dp"
             app:tabTextAppearance="@style/TextAppearance.AppCompat.Small">
 
             <android.support.design.widget.TabItem
-                android:id="@+id/tabStats"
+                android:id="@+id/eeg"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Stats"
-
-                />
-
+                android:text="EEG" />
 
             <android.support.design.widget.TabItem
-                android:id="@+id/tabDiary"
+                android:id="@+id/heartrate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Diary" />
+                android:text="Heart Rate" />
 
 
         </android.support.design.widget.TabLayout>
-        
     </android.support.design.widget.AppBarLayout>
 
     <android.support.v4.view.ViewPager
         android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#525252"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior" >
-        <!--<ImageView-->
-            <!--android:layout_width="36dp"-->
-            <!--android:layout_height="36dp"-->
-            <!--android:src="@drawable/clock"-->
-            <!--android:layout_marginTop="231dp"-->
-            <!--android:layout_marginLeft="45dp"-->
-            <!--/>-->
-    </android.support.v4.view.ViewPager>
+        android:background="@drawable/dark_face_bkd"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
 
 

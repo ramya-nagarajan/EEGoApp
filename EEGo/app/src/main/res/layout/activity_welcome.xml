@@ -6,7 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:openDrawer="start">
+    tools:openDrawer="start"
+    >
 
     <include
         layout="@layout/app_bar_welcome"
@@ -20,6 +21,9 @@
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/nav_header_welcome"
-        app:menu="@menu/activity_welcome_drawer" />
+        app:menu="@menu/activity_welcome_drawer"
+        android:background="#212121"
+        app:itemTextColor="#ffffff"
+        android:paddingLeft="50dp"/>
 
 </android.support.v4.widget.DrawerLayout>
