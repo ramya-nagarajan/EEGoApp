@@ -18,7 +18,7 @@
             android:text="Total Seconds: "
             android:textColor="#ffffff"
             android:textSize="14dp"
-            android:layout_marginTop="330dp"
+            android:layout_marginTop="270dp"
             android:layout_marginLeft="52dp"/>
 
         <TextView
@@ -27,7 +27,7 @@
             android:id="@+id/totalSecVal"
             android:textColor="#ffffff"
             android:textSize="14dp"
-            android:layout_marginTop="330dp"
+            android:layout_marginTop="270dp"
             android:layout_marginLeft="140dp"/>
 
         <TextView
@@ -37,7 +37,7 @@
             android:text="Calm Seconds: "
             android:textColor="#ffffff"
             android:textSize="14dp"
-            android:layout_marginTop="350dp"
+            android:layout_marginTop="290dp"
             android:layout_marginLeft="52dp"/>
 
         <TextView
@@ -46,7 +46,7 @@
             android:id="@+id/calmSecVal"
             android:textColor="#ffffff"
             android:textSize="14dp"
-            android:layout_marginTop="350dp"
+            android:layout_marginTop="290dp"
             android:layout_marginLeft="140dp"/>
 
         <TextView
@@ -56,7 +56,7 @@
             android:text="Recoveries: "
             android:textColor="#ffffff"
             android:textSize="14dp"
-            android:layout_marginTop="370dp"
+            android:layout_marginTop="310dp"
             android:layout_marginLeft="52dp"/>
 
         <TextView
@@ -65,7 +65,7 @@
             android:id="@+id/numRecoveriesVal"
             android:textColor="#ffffff"
             android:textSize="12dp"
-            android:layout_marginTop="370dp"
+            android:layout_marginTop="310dp"
             android:layout_marginLeft="120dp"/>
 
         <TextView
@@ -75,7 +75,7 @@
             android:text="Average Heart Rate: "
             android:textColor="#ffffff"
             android:textSize="14dp"
-            android:layout_marginTop="390dp"
+            android:layout_marginTop="330dp"
             android:layout_marginLeft="52dp"/>
 
         <TextView
@@ -84,7 +84,7 @@
             android:id="@+id/avgHeartRateVal"
             android:textColor="#ffffff"
             android:textSize="14dp"
-            android:layout_marginTop="390dp"
+            android:layout_marginTop="330dp"
             android:layout_marginLeft="170dp"/>
 
         <TextView
@@ -94,7 +94,7 @@
             android:text="bpm"
             android:textColor="#ffffff"
             android:textSize="14dp"
-            android:layout_marginTop="390dp"
+            android:layout_marginTop="330dp"
             android:layout_marginLeft="200dp"/>
         <Button
             android:layout_width="230dp"
