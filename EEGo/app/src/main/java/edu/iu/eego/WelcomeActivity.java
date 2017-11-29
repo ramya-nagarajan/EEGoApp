@@ -2,6 +2,8 @@ package edu.iu.eego;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Environment;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -13,6 +15,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.util.ArrayList;
+import java.util.List;
 
 public class WelcomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -68,6 +76,68 @@ public class WelcomeActivity extends AppCompatActivity
         return true;
     }
 
+//    public void writeFile(View v) {
+//        List<List<Double>> alphaList = new ArrayList<>();
+//        List<Double> alphabuffer = new ArrayList();
+//        alphabuffer.add(5.0);
+//        alphabuffer.add(10.0);
+//        alphabuffer.add(20.0);
+//        alphabuffer.add(30.0);
+//        alphaList.add(alphabuffer);
+//        alphabuffer = new ArrayList();
+//        alphabuffer.add(35.0);
+//        alphabuffer.add(40.0);
+//        alphabuffer.add(45.0);
+//        alphabuffer.add(50.0);
+//        alphaList.add(alphabuffer);
+////        File sdCard = Environment.getExternalStorageDirectory();
+////        File dir = getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS);
+//        // Get the directory for the user's public pictures directory.
+//        File dir = new File(Environment.getExternalStoragePublicDirectory(
+//                Environment.DIRECTORY_DOWNLOADS), "muse");
+//        if(!dir.exists()) {
+//            dir.mkdirs();
+//        }
+//
+//        File file = new File(dir, "test.txt");
+////        if(!file.exists()) {
+////            try {
+////                file.createNewFile();
+////            } catch(Exception e) {
+////                e.printStackTrace();
+////            }
+////        }
+//        try {
+//            FileOutputStream f = new FileOutputStream(file);
+//            f.write("10.0, 20.0,30.0".getBytes());
+//            f.close();
+//        }catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//        /*final File dir = getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS);
+//        final File file = new File(dir, "alpha_values.csv" );
+//            *//*if (file.exists()) {
+//                file.delete();
+//            }*//*
+//        FileWriter fileWriter = null;
+//        try {
+//            fileWriter = new FileWriter(file);
+//            for (List l : alphaList) {
+//                StringBuilder sb = new StringBuilder();
+//                sb.append(l.get(0) + "," + l.get(1) + ","+l.get(2)+","+l.get(3));
+//                sb.append("\n");
+//                fileWriter.append(sb.toString());
+//            }
+//        } catch(Exception e) {
+//            Toast.makeText(getApplicationContext(), "Cannot store data", Toast.LENGTH_SHORT).show();
+//        }
+//        try {
+//            fileWriter.close();
+//        } catch (Exception e2) {
+//            Toast.makeText(getApplicationContext(), "Error occured", Toast.LENGTH_SHORT).show();
+//        }*/
+//
+//    }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will

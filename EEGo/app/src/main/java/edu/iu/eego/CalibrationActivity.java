@@ -406,9 +406,15 @@ public class CalibrationActivity extends AppCompatActivity {
                 getEegChannelValues(alphaBuffer, p);
                 if(!isCalibrationCompleted) {
                     if(isActiveTimerOn) {
-                        alphaActiveList.add(alphaBuffer);
+                        if(!(Double.isNaN(alphaBuffer.get(0)) || Double.isNaN(alphaBuffer.get(1)) ||
+                                Double.isNaN(alphaBuffer.get(2)) || Double.isNaN(alphaBuffer.get(3)))) {
+                            alphaActiveList.add(alphaBuffer);
+                        }
                     } else if(isCalmTimerOn) {
-                        alphaCalmList.add(alphaBuffer);
+                        if(!(Double.isNaN(alphaBuffer.get(0)) || Double.isNaN(alphaBuffer.get(1)) ||
+                                Double.isNaN(alphaBuffer.get(2)) || Double.isNaN(alphaBuffer.get(3)))) {
+                            alphaCalmList.add(alphaBuffer);
+                        }
                     }
                 }
                 break;
@@ -417,9 +423,15 @@ public class CalibrationActivity extends AppCompatActivity {
                 getEegChannelValues(thetaBuffer, p);
                 if(!isCalibrationCompleted) {
                     if(isActiveTimerOn) {
-                        thetaActiveList.add(thetaBuffer);
+                        if(!(Double.isNaN(thetaBuffer.get(0)) || Double.isNaN(thetaBuffer.get(1)) ||
+                                Double.isNaN(thetaBuffer.get(2)) || Double.isNaN(thetaBuffer.get(3)))) {
+                            thetaActiveList.add(thetaBuffer);
+                        }
                     } else if(isCalmTimerOn) {
-                        thetaCalmList.add(thetaBuffer);
+                        if(!(Double.isNaN(thetaBuffer.get(0)) || Double.isNaN(thetaBuffer.get(1)) ||
+                                Double.isNaN(thetaBuffer.get(2)) || Double.isNaN(thetaBuffer.get(3)))) {
+                            thetaCalmList.add(thetaBuffer);
+                        }
                     }
                 }
                 break;
@@ -428,9 +440,15 @@ public class CalibrationActivity extends AppCompatActivity {
                 getEegChannelValues(betaBuffer, p);
                 if(!isCalibrationCompleted) {
                     if(isActiveTimerOn) {
-                        betaActiveList.add(betaBuffer);
+                        if(!(Double.isNaN(betaBuffer.get(0)) || Double.isNaN(betaBuffer.get(1)) ||
+                                Double.isNaN(betaBuffer.get(2)) || Double.isNaN(betaBuffer.get(3)))) {
+                            betaActiveList.add(betaBuffer);
+                        }
                     } else if(isCalmTimerOn) {
-                        betaCalmList.add(betaBuffer);
+                        if(!(Double.isNaN(betaBuffer.get(0)) || Double.isNaN(betaBuffer.get(1)) ||
+                                Double.isNaN(betaBuffer.get(2)) || Double.isNaN(betaBuffer.get(3)))) {
+                            betaCalmList.add(betaBuffer);
+                        }
                     }
                 }
                 break;
