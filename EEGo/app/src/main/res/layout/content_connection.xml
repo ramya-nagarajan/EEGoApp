@@ -86,7 +86,7 @@
             android:layout_below="@+id/currentMood"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="15dp"
-            android:backgroundTint="#42000000"
+            android:backgroundTint="#420000"
             android:thumbTint="#f5a623"
             tools:layout_editor_absoluteX="60dp" />
 
@@ -127,7 +127,7 @@
             android:layout_marginTop="90dp"
             android:width="150dp"
             android:background="#acacac"
-            android:text="Start"
+            android:text="Next"
             android:textAllCaps="false"
             android:textColor="#808080"
             android:textSize="14sp" />

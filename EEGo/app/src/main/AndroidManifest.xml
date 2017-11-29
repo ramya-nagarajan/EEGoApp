@@ -42,7 +42,7 @@
         </activity>
         <activity
             android:name=".CalibrationActivity"
-            android:label="@string/title_activity_calibration"
+            android:label="Headset Connection"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".PlanInformationActivity"
@@ -69,6 +69,11 @@
                 android:value="edu.iu.eego.WelcomeActivity" />
         </activity>
         <activity
+            android:name=".SessionActivity"
+            android:label="@string/title_activity_session"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+
+        <activity
             android:name=".OverallProgressActivity"
             android:label="@string/title_activity_overall_progress"
             android:theme="@style/AppTheme.NoActionBar">
@@ -76,6 +81,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="edu.iu.eego.WelcomeActivity" />
         </activity>
+
     </application>
 
 </manifest>
