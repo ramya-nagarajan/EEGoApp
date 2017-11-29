@@ -103,7 +103,7 @@
                 android:textSize="16sp"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="15dp"
-                android:onClick="showCommunityChallengeActivity"
+                android:onClick="showProgressActivity"
                 />
         </TableRow>
     </TableLayout>

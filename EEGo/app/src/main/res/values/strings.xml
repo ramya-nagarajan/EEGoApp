@@ -23,6 +23,6 @@
     <string name="section_format">Hello World from section: %1$d</string>
     <string name="title_activity_profile">ProfileActivity</string>
     <string name="title_activity_community_challenge">CommunityChallengeActivity</string>
-    <string name="title_activity_progress">ProgressActivity</string>
     <string name="title_activity_session">SessionActivity</string>
+    <string name="title_activity_overall_progress">OverallProgressActivity</string>
 </resources>

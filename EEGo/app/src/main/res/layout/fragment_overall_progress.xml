@@ -1,0 +1,115 @@
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraintLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="edu.iu.eego.OverallProgressActivity$PlaceholderFragment">
+
+   <!-- <TextView
+        android:id="@+id/section_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:layout_marginEnd="@dimen/activity_horizontal_margin"
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/constraintLayout"
+        tools:layout_constraintLeft_creator="1"
+        tools:layout_constraintTop_creator="1" />-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/dark_face_bkd"
+        android:id="@+id/showprogress"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/totalSec"
+            android:text="Total Seconds: "
+            android:textColor="#ffffff"
+            android:textSize="14dp"
+            android:layout_marginTop="330dp"
+            android:layout_marginLeft="52dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/totalSecVal"
+            android:textColor="#ffffff"
+            android:textSize="14dp"
+            android:layout_marginTop="330dp"
+            android:layout_marginLeft="140dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/calmSec"
+            android:text="Calm Seconds: "
+            android:textColor="#ffffff"
+            android:textSize="14dp"
+            android:layout_marginTop="350dp"
+            android:layout_marginLeft="52dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/calmSecVal"
+            android:textColor="#ffffff"
+            android:textSize="14dp"
+            android:layout_marginTop="350dp"
+            android:layout_marginLeft="140dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/numRecoveries"
+            android:text="Recoveries: "
+            android:textColor="#ffffff"
+            android:textSize="14dp"
+            android:layout_marginTop="370dp"
+            android:layout_marginLeft="52dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/numRecoveriesVal"
+            android:textColor="#ffffff"
+            android:textSize="12dp"
+            android:layout_marginTop="370dp"
+            android:layout_marginLeft="120dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/avgHeartRate"
+            android:text="Average Heart Rate: "
+            android:textColor="#ffffff"
+            android:textSize="14dp"
+            android:layout_marginTop="390dp"
+            android:layout_marginLeft="52dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/avgHeartRateVal"
+            android:textColor="#ffffff"
+            android:textSize="14dp"
+            android:layout_marginTop="390dp"
+            android:layout_marginLeft="170dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textBpm"
+            android:text="bpm"
+            android:textColor="#ffffff"
+            android:textSize="14dp"
+            android:layout_marginTop="390dp"
+            android:layout_marginLeft="200dp"/>
+
+    </RelativeLayout>
+
+</android.support.constraint.ConstraintLayout>

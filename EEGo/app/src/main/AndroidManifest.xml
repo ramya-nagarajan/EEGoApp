@@ -71,11 +71,17 @@
         <activity
             android:name=".SessionActivity"
             android:label="@string/title_activity_session"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
-        <activity android:name=".ProgressActivity"
-            android:label="@string/title_activity_progress"
             android:theme="@style/AppTheme.NoActionBar"></activity>
+
+        <activity
+            android:name=".OverallProgressActivity"
+            android:label="@string/title_activity_overall_progress"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="edu.iu.eego.WelcomeActivity" />
+        </activity>
+
     </application>
 
 </manifest>

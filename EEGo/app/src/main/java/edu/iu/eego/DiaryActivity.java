@@ -24,102 +24,137 @@ import android.widget.Toast;
 public class DiaryActivity extends Fragment {
 
     static int id =1;
+    TextView text1;
+    TextView date_text;
+    TextView before;
+    TextView moodBefore;
+    TextView after;
+    TextView moodAfter;
+    TextView desc;
+    TextView showDayDescription;
+    TextView hideDayDescription;
+    TextView fullLengthDescription;
+    TextView header;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_profile2, container, false);
-        RelativeLayout relLayout = (RelativeLayout)rootView.findViewById(R.id.relLayoutFragment2);
-        //relLayout.removeAllViews();
+        final View rootView = inflater.inflate(R.layout.fragment_profile2, container, false);
+        final RelativeLayout relLayout1 = (RelativeLayout) rootView.findViewById(R.id.allDaysView);
+        final RelativeLayout relLayout2 = (RelativeLayout) rootView.findViewById(R.id.dayDetails);
 
-        RelativeLayout.LayoutParams params= new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+        showDayDescription = new TextView(rootView.getContext());
+        showDayDescription.generateViewId();
+        showDayDescription.setText(">");
+        showDayDescription.setTextSize(18);
+        showDayDescription.setTextColor(Color.parseColor("#ffffff"));
+        showDayDescription.setPadding(950, 170, 20, 10);
+        showDayDescription.setClickable(true);
 
-        int days = 4;
 
-        TextView text1 = new TextView(rootView.getContext());
+        text1 = new TextView(rootView.getContext());
 
         text1.setTextSize(18);
         text1.setTextColor(Color.parseColor("#ffffff"));
         text1.setText("A Life of Calm - Day 4");
 
+        RelativeLayout.LayoutParams params= new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);
         RelativeLayout.LayoutParams  layoutParams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT,495);
         layoutParams.setMargins(15,40,15,484);
         text1.setLayoutParams(layoutParams);
         text1.setBackgroundResource(R.drawable.plan_1_image);
         text1.setPadding(20,20,138,10);
-        //text1.setId(id);
         text1.generateViewId();
 
-        TextView date_text = new TextView(rootView.getContext());
+        date_text = new TextView(rootView.getContext());
         date_text.setTextSize(10);
         date_text.setTextColor(Color.parseColor("#ffffff"));
         date_text.setText("November 22, 2017");
-        date_text.setPadding(48,130,138,10);
+        date_text.setPadding(48,140,138,10);
         date_text.generateViewId();
         params.addRule(RelativeLayout.BELOW, text1.getId());
         date_text.setLayoutParams(params);
-       /* RelativeLayout.LayoutParams  layoutParams1 = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT,225);
-        layoutParams1.setMargins(40,107,15,484);
-        date_text.setLayoutParams(layoutParams);*/
 
-        TextView before = new TextView(rootView.getContext());
+
+        before = new TextView(rootView.getContext());
         before.setTextSize(10);
         before.setTextColor(Color.parseColor("#ffffff"));
         before.setText("Before:");
-        before.setPadding(48,180,138,10);
-       // RelativeLayout.LayoutParams  layoutParams2 = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT,225);
-        //layoutParams2.setMargins(40,150,15,484);
-      //  before.setLayoutParams(layoutParams);
+        before.setPadding(48,190,138,10);
 
-       TextView moodBefore = new TextView(rootView.getContext());
+        moodBefore = new TextView(rootView.getContext());
         moodBefore.setTextSize(10);
         moodBefore.setTextColor(Color.parseColor("#ffffff"));
         moodBefore.setText("Frustrated");
-        moodBefore.setPadding(170,180,138,10);
-       /* RelativeLayout.LayoutParams  layoutParamsmoodBefore = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT,225);
-        layoutParamsmoodBefore.setMargins(150,40,15,484);
-        moodBefore.setLayoutParams(layoutParamsmoodBefore);*/
+        moodBefore.setPadding(170,190,138,10);
 
-        TextView after = new TextView(rootView.getContext());
+        after = new TextView(rootView.getContext());
         after.setTextSize(10);
         after.setTextColor(Color.parseColor("#ffffff"));
         after.setText("After: ");
-        after.setPadding(48,230,138,10);
-        /*RelativeLayout.LayoutParams  layoutParams3 = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT,225);
-        layoutParams2.setMargins(15,380,15,484);
-        after.setLayoutParams(layoutParams);*/
-        //add the after mood as a textview
-        TextView moodAfter = new TextView(rootView.getContext());
+        after.setPadding(48,240,138,10);
+
+        moodAfter = new TextView(rootView.getContext());
         moodAfter.setTextSize(10);
         moodAfter.setTextColor(Color.parseColor("#ffffff"));
         moodAfter.setText("Relaxed");
-        moodAfter.setPadding(140,230,138,10);
+        moodAfter.setPadding(140,240,138,10);
 
-        TextView desc = new TextView(rootView.getContext());
+        desc = new TextView(rootView.getContext());
         desc.setTextSize(14);
         desc.setTextColor(Color.parseColor("#ffffff"));
         desc.setText("Today I was annoyed because our prototyping assignment took forever, so… ");
-        desc.setPadding(48,300,138,10);
-        /*RelativeLayout.LayoutParams  layoutParams4 = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT,225);
-        layoutParams2.setMargins(15,510,15,484);
-        desc.setLayoutParams(layoutParams);*/
+        desc.setPadding(48,330,138,10);
 
-        TextView dayDescription = new TextView(rootView.getContext());
-        dayDescription.generateViewId();
-        dayDescription.setText(">");
-        dayDescription.setTextSize(18);
-        dayDescription.setTextColor(Color.parseColor("#ffffff"));
-        dayDescription.setPadding(950,180,20,10);
-        dayDescription.setGravity(70);
+        relLayout1.addView(text1);
+        relLayout1.addView(showDayDescription);
+        relLayout1.addView(date_text);
+        relLayout1.addView(before);
+        relLayout1.addView(moodBefore);
+        relLayout1.addView(after);
+        relLayout1.addView(moodAfter);
+        relLayout1.addView(desc);
 
-        relLayout.addView(text1);
-        relLayout.addView(date_text);
-        relLayout.addView(before);
-        relLayout.addView(moodBefore);
-        relLayout.addView(after);
-        relLayout.addView(moodAfter);
-        relLayout.addView(desc);
-        relLayout.addView(dayDescription);
-        //Toast.makeText(rootView.getContext(), "this is fragment 2 id: "+rootView.findViewById(R.id.relLayoutFragment2), Toast.LENGTH_SHORT).show();
+
+        header = new TextView(rootView.getContext());
+        header.setText("A Life of Calm-Day 4");
+        header.setTextColor(Color.parseColor("#ffffff"));
+        header.setTextSize(18);
+        header.setPadding(200,60,138,10);
+
+        fullLengthDescription = new TextView(rootView.getContext());
+        fullLengthDescription.setTextSize(12);
+        fullLengthDescription.setText("Today I was annoyed because our prototyping assigment took forever, so I wasn't able to work on my portfolio like I had originally planned." +
+                "However, I'm grateful that we have a good team for this assignment, so working together hasn't been as difficult as some of the projects in the past."+
+                "We're also making progress on our Mobile and Pervasive project, which is super exciting. It's been a great opportunity to learn how ot work alongside developers and learn about how they work."
+        );
+        fullLengthDescription.setTextColor(Color.parseColor("#ffffff"));
+        fullLengthDescription.setPadding(200,200,138,10);
+        hideDayDescription = new TextView(rootView.getContext());
+        hideDayDescription.generateViewId();
+        hideDayDescription.setText("<");
+        hideDayDescription.setTextSize(18);
+        hideDayDescription.setTextColor(Color.parseColor("#ffffff"));
+        hideDayDescription.setPadding(50,30,200,10);
+        hideDayDescription.setClickable(true);
+        relLayout2.addView(hideDayDescription);
+        relLayout2.addView(header);
+        relLayout2.addView(fullLengthDescription);
+        showDayDescription.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                relLayout1.setVisibility(View.INVISIBLE);
+                relLayout2.setVisibility(View.VISIBLE);
+            }
+
+        });
+        hideDayDescription.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                relLayout2.setVisibility(View.INVISIBLE);
+                relLayout1.setVisibility(View.VISIBLE);
+            }
+
+        });
         return rootView;
     }
 }
