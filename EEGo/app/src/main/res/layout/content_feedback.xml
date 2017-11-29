@@ -78,6 +78,18 @@
         android:layout_marginTop="50dp"
         android:layout_below="@+id/moodDesc"
         />
+    
+    <Button
+        android:layout_width="94dp"
+        android:layout_height="36dp"
+        android:text="Submit"
+        android:textAllCaps="false"
+        android:textColor="#ffffff"
+        android:textSize="14sp"
+        android:background="#f5a623"
+        android:layout_below="@+id/moodDesc"
+        android:layout_marginTop="158dp"
+        android:layout_marginLeft="133dp"/>
 
 
 </RelativeLayout>
