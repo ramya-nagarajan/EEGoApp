@@ -38,13 +38,17 @@
                     android:layout_width="match_parent"
                     android:visibility="visible"
                     android:id="@+id/allDaysView"
-                    android:layout_height="match_parent"></RelativeLayout>
+                    android:layout_height="match_parent">
+
+                </RelativeLayout>
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:visibility="invisible"
                     android:id="@+id/dayDetails"
                     android:layout_height="match_parent"
-                    android:background="@drawable/dark_face_bkd"></RelativeLayout>
+                    android:background="@drawable/dark_face_bkd">
+
+                </RelativeLayout>
             </RelativeLayout>
         </LinearLayout>
     </ScrollView>
