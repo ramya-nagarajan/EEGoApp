@@ -109,7 +109,17 @@
             android:textSize="14dp"
             android:layout_marginTop="390dp"
             android:layout_marginLeft="200dp"/>
-
+        <Button
+            android:layout_width="230dp"
+            android:layout_height="36dp"
+            android:text="Add to Community Challenge"
+            android:textAllCaps="false"
+            android:background="#f5a623"
+            android:textColor="#ffffff"
+            android:layout_marginTop="42dp"
+            android:layout_below="@id/textBpm"
+            android:layout_marginLeft="65dp"
+            android:onClick="showCommunityChallengeActivity"/>
     </RelativeLayout>
 
 </android.support.constraint.ConstraintLayout>
