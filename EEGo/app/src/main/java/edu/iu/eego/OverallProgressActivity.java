@@ -1,5 +1,6 @@
 package edu.iu.eego;
 
+import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -18,6 +19,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.ArrayList;
 
 public class OverallProgressActivity extends AppCompatActivity {
 
@@ -36,6 +40,7 @@ public class OverallProgressActivity extends AppCompatActivity {
      */
     private ViewPager mViewPager;
 
+    private String calmPoints = "0";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,7 +64,28 @@ public class OverallProgressActivity extends AppCompatActivity {
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
 
+        Intent intent = getIntent();
+        String calmSeconds = intent.getStringExtra("calmSeconds");
+        String recoveries = intent.getStringExtra("recoveries");
+        String totalSeconds = intent.getStringExtra("totalSeconds");
+        calmPoints = intent.getStringExtra("calmPoints");
+        ArrayList<Double> alphaList = (ArrayList<Double>) getIntent().getSerializableExtra("alphaList");
 
+        TextView calmSecondsTextView = (TextView) findViewById(R.id.calmSecVal);
+        calmSecondsTextView.setText(calmSeconds);
+        TextView recoveriesTextView = (TextView) findViewById(R.id.numRecoveriesVal);
+        calmSecondsTextView.setText(recoveries);
+        TextView totalSecondsTextView = (TextView) findViewById(R.id.totalSecVal);
+        calmSecondsTextView.setText(totalSeconds);
+        TextView heartRateTextView = (TextView) findViewById(R.id.avgHeartRateVal);
+        calmSecondsTextView.setText("80");
+
+    }
+
+    public void showCommunityChallengeActivity(View view) {
+        Intent intent = new Intent(getApplicationContext(), CommunityChallengeActivity.class);
+        intent.putExtra("calmPoints", calmPoints);
+        startActivity(intent);
     }
 
 

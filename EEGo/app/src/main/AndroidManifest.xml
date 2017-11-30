@@ -70,8 +70,12 @@
         </activity>
         <activity
             android:name=".SessionActivity"
-            android:label="@string/title_activity_session"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:label="Session"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="edu.iu.eego.CalibrationActivity" />
+        </activity>
 
         <activity
             android:name=".OverallProgressActivity"
@@ -81,7 +85,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="edu.iu.eego.WelcomeActivity" />
         </activity>
-
     </application>
 
 </manifest>

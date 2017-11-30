@@ -28,15 +28,12 @@ public class PlanInformationActivity extends AppCompatActivity {
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.back_white);
 
     }
+
     public void showConnectionActivity(View view) {
         Intent intent = new Intent(getApplicationContext(), ConnectionActivity.class);
         startActivity(intent);
     }
 
-    public void showProfileActivity(View view) {
-        Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
-        startActivity(intent);
-    }
 
     @Override
     protected void onPause()

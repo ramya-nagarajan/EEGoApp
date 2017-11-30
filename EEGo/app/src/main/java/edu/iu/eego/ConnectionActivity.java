@@ -16,15 +16,18 @@ import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.SeekBar;
 import android.widget.Spinner;
@@ -75,6 +78,7 @@ public class ConnectionActivity extends AppCompatActivity implements View.OnClic
 
     private ConnectionListener connectionListener;
 
+
     public void receiveMuseConnectionPacket(final MuseConnectionPacket p, final Muse muse) {
 
         final ConnectionState current = p.getCurrentConnectionState();
@@ -86,21 +90,32 @@ public class ConnectionActivity extends AppCompatActivity implements View.OnClic
             Log.i(TAG, "Muse connected:" + muse.getName());
             Button connectBtn = (Button) findViewById(R.id.connectButton);
             connectBtn.setText("Connected to " + muse.getName());
+            connectBtn.setEnabled(false);
             Button startBtn = (Button) findViewById(R.id.startButton);
             startBtn.setBackgroundColor(Color.parseColor("#f5a623"));
             startBtn.setTextColor(Color.parseColor("#ffffff"));
+            ProgressBar progressBar = (ProgressBar) findViewById(R.id.progressBar);
+            progressBar.setVisibility(View.INVISIBLE);
+
             startBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    TextView noOfMinutes = (TextView) findViewById(R.id.noOfMinutes) ;
+                    TextView currentMood = (TextView) findViewById(R.id.currentMoodView) ;
+                    String minutes = noOfMinutes.getText()+"";
+                    String mood = currentMood.getText()+"";
+
                     Intent intent = new Intent(getApplicationContext(), CalibrationActivity.class);
                     intent.putExtra("museName", muse.getName());
+                    intent.putExtra("noOfMinutes",minutes);
+                    intent.putExtra("currentMood",mood);
                     startActivity(intent);
 
                 }
             });
         } else if(current == ConnectionState.DISCONNECTED) {
             Log.i(TAG, "Muse disconnected:" + muse.getName());
-            Toast.makeText(context, "Connection State:" + muse.getConnectionState(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "Headset Disconnected!", Toast.LENGTH_SHORT).show();
             this.muse.unregisterAllListeners();
             this.muse = null;
         }
@@ -114,11 +129,20 @@ public class ConnectionActivity extends AppCompatActivity implements View.OnClic
     public void initDialog(List<Muse> list) {
         // custom dialog
         final Dialog dialog = new Dialog(context);
+        dialog.setCanceledOnTouchOutside(false);
+        dialog.setOnKeyListener(new DialogInterface.OnKeyListener() {
+            @Override
+            public boolean onKey(DialogInterface dialog, int keyCode, KeyEvent event) {
+                // Prevent dialog close on back press button
+                return keyCode == KeyEvent.KEYCODE_BACK;
+            }
+        });
         dialog.setContentView(R.layout.muse_headsets_dialog);
-
         // set the custom dialog components - text, image and button
         final LinearLayout linearLayout = (LinearLayout) dialog.findViewById(R.id.museHeadSetLayout);
         linearLayout.removeAllViews();
+        ProgressBar progressBar = (ProgressBar) findViewById(R.id.progressBar);
+        progressBar.setVisibility(View.INVISIBLE);
         int i = 0;
         for(Muse m:list) {
             TextView text1 = new TextView(context);
@@ -132,7 +156,6 @@ public class ConnectionActivity extends AppCompatActivity implements View.OnClic
                 public void onClick(View v) {
                     dialog.dismiss();
                     onSelectMuseHeadSet(v);
-
                 }
             });
             linearLayout.addView(text1);
@@ -144,11 +167,15 @@ public class ConnectionActivity extends AppCompatActivity implements View.OnClic
         dialogRefreshButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                dialog.dismiss();
+                linearLayout.removeAllViews();
                 manager.stopListening();
                 manager.startListening();
-                linearLayout.removeAllViews();
+                ProgressBar progressBar = (ProgressBar) findViewById(R.id.progressBar);
+                progressBar.setVisibility(View.VISIBLE);
             }
         });
+
         if(!dialog.isShowing()) {
             dialog.show();
         }
@@ -158,8 +185,9 @@ public class ConnectionActivity extends AppCompatActivity implements View.OnClic
         TextView tv = (TextView) v;
         String tv_string = tv.getText()+"";
         int firstNum = Integer.parseInt(tv_string.charAt(0)+"");
-        manager.stopListening();
 
+        ProgressBar progressBar = (ProgressBar) findViewById(R.id.progressBar);
+        progressBar.setVisibility(View.VISIBLE);
         List<Muse> availableMuses = manager.getMuses();
 
         // Check that we actually have something to connect to.
@@ -252,16 +280,16 @@ public class ConnectionActivity extends AppCompatActivity implements View.OnClic
         Button button = (Button) findViewById(R.id.connectButton);
         SeekBar seekBar = (SeekBar) findViewById(R.id.sessionLengthSeekBar);
         seekBar.setProgress(0);
-        seekBar.setMax(19);
+        seekBar.setMax(17);
         final TextView noOfMinutes = (TextView)findViewById(R.id.noOfMinutes);
-        noOfMinutes.setText("1 minute(s)");
+        noOfMinutes.setText("3 minutes");
         final WeakReference<ConnectionActivity> weakActivity =
                 new WeakReference<ConnectionActivity>(this);
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
 
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                noOfMinutes.setText(String.valueOf(progress+1)+" minute(s)");
+                noOfMinutes.setText(String.valueOf(progress+3)+" minute(s)");
             }
 
             @Override
@@ -331,6 +359,8 @@ public class ConnectionActivity extends AppCompatActivity implements View.OnClic
                     manager.setMuseListener(new MuseL(weakActivity));
 
                     manager.startListening();
+                    ProgressBar progressBar = (ProgressBar) findViewById(R.id.progressBar);
+                    progressBar.setVisibility(View.VISIBLE);
                 } else {
                     Toast.makeText(context, "Please turn on Bluetooth", Toast.LENGTH_SHORT).show();
                 }
@@ -338,6 +368,8 @@ public class ConnectionActivity extends AppCompatActivity implements View.OnClic
             }
         });
     }
+
+
 
     public boolean isBluetoothEnabled() {
         return BluetoothAdapter.getDefaultAdapter().isEnabled();
@@ -351,5 +383,46 @@ public class ConnectionActivity extends AppCompatActivity implements View.OnClic
     @Override
     protected void onDestroy() {
         super.onDestroy();
+    }
+
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            if(null == muse) {
+                if(null != manager) {
+                    manager.stopListening();
+                }
+
+                onBackPressed();
+            } else {
+                final Dialog dialog = new Dialog(context);
+                dialog.setContentView(R.layout.confirm_back_press_dialog);
+
+                Button yesButton = (Button) dialog.findViewById(R.id.yesBtn);
+                Button noButton = (Button) dialog.findViewById(R.id.noBtn);
+                // if button is clicked, close the custom dialog
+                yesButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.dismiss();
+                        manager.stopListening();
+                        muse.unregisterAllListeners();
+                        muse.disconnect();
+                        onBackPressed();
+                    }
+                });
+                noButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.dismiss();
+                    }
+                });
+                if (!dialog.isShowing()) {
+                    dialog.show();
+                }
+
+                return true;
+            }
+        }
+        return super.onKeyDown(keyCode, event);
     }
 }

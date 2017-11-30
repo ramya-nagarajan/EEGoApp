@@ -47,7 +47,7 @@
                 android:textSize="16sp"
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="5dp"
-                android:onClick="showConnectionActivity"
+                android:onClick="showPlansActivity"
                 />
             <TextView
                 android:id="@+id/reduceStressText"
@@ -103,7 +103,7 @@
                 android:textSize="16sp"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="15dp"
-                android:onClick="showProgressActivity"
+                android:onClick="showPlansActivity"
                 />
         </TableRow>
     </TableLayout>

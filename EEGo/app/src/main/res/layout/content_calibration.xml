@@ -264,7 +264,7 @@
                 android:layout_marginTop="20dp"
                 android:background="#acacac"
                 android:enabled="false"
-                android:onClick="switchViewsToCalibration"
+                android:onClick="showSessionActivity"
                 android:text="Next"
                 android:textColor="#ffffff"
                 android:textStyle="italic"

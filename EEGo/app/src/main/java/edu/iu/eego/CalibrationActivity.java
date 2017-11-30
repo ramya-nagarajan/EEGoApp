@@ -69,6 +69,9 @@ public class CalibrationActivity extends AppCompatActivity {
     private Double activeAlphaThresholdFP;
     private Double activeBetaThresholdFP;
     private Double activeThetaThresholdFP;
+    private int minutes = 1;
+    private String currentMood = "Happy";
+
 
     private CountDownTimer countDownTimerStart = new CountDownTimer(5000, 1000) {
         @Override
@@ -85,10 +88,11 @@ public class CalibrationActivity extends AppCompatActivity {
 
         @Override
         public void onFinish() {
+            SeekBar progressIndicator = (SeekBar) findViewById(R.id.progressIndicator);
+            progressIndicator.incrementProgressBy(13);
             isStartTimerOn = false;
             isActiveTimerOn = true;
-            SeekBar seekBar = (SeekBar) findViewById(R.id.progressIndicator);
-            seekBar.setProgress(6);
+            progressIndicator.setProgress(6);
             TextView timeRemaining = (TextView) findViewById(R.id.timeRemaining);
             timeRemaining.setText(String.format("%d:%02d", 30, 0));
             startTimer(countDownTimerActive);
@@ -114,8 +118,14 @@ public class CalibrationActivity extends AppCompatActivity {
             TextView timeRemaining = (TextView) findViewById(R.id.timeRemaining);
             isActiveTimerOn = false;
             isBreakTimerOn = true;
-            MediaPlayer mp = MediaPlayer.create(CalibrationActivity.this, R.raw.calibration_relax);
+            final MediaPlayer mp = MediaPlayer.create(CalibrationActivity.this, R.raw.calibration_relax);
             mp.start();
+            mp.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                @Override
+                public void onCompletion(MediaPlayer mediaPlayer) {
+                    mp.release();
+                }
+            });
             SeekBar seekBar = (SeekBar) findViewById(R.id.progressIndicator);
             seekBar.setProgress(6);
             timeRemaining.setText(String.format("%d:%02d", 5, 0));
@@ -163,45 +173,21 @@ public class CalibrationActivity extends AppCompatActivity {
         public void onFinish() {
             isCalibrationCompleted = true;
             isCalmTimerOn = false;
-            MediaPlayer mp = MediaPlayer.create(CalibrationActivity.this, R.raw.calibration_completed);
+            final MediaPlayer mp = MediaPlayer.create(CalibrationActivity.this, R.raw.calibration_completed);
             mp.start();
+            mp.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                @Override
+                public void onCompletion(MediaPlayer mediaPlayer) {
+                    mp.release();
+                }
+            });
             computeThresholds();
             TextView timeRemaining = (TextView) findViewById(R.id.timeRemaining);
             timeRemaining.setText("Calibration Completed! Click Next to start session");
             timeRemaining.setTextSize(14);
             Button nextActivityButton = (Button) findViewById(R.id.nextActivityButton);
             nextActivityButton.setBackgroundColor(Color.parseColor("#f5a623"));
-            nextActivityButton.isEnabled();
-            Intent intent = new Intent(getApplicationContext(), SessionActivity.class);
-
-            intent.putExtra("activeAlphaThreshold",activeAlphaThreshold);
-            intent.putExtra("calmAlphaThreshold",calmAlphaThreshold);
-            intent.putExtra("activeBetaThreshold",activeBetaThreshold);
-            intent.putExtra("calmBetaThreshold",calmBetaThreshold);
-            intent.putExtra("activeThetaThreshold",activeThetaThreshold);
-            intent.putExtra("calmThetaThreshold",calmThetaThreshold);
-
-//            intent.putExtra("activeAlphaThresholdTP",activeAlphaThresholdTP);
-//            intent.putExtra("calmAlphaThresholdTP",calmAlphaThresholdTP);
-//            intent.putExtra("activeBetaThresholdTP",activeBetaThresholdTP);
-//            intent.putExtra("calmBetaThresholdTP",calmBetaThresholdTP);
-//            intent.putExtra("activeThetaThresholdTP",activeThetaThresholdTP);
-//            intent.putExtra("calmThetaThresholdTP",calmThetaThresholdTP);
-//            intent.putExtra("activeAlphaThresholdFP",activeAlphaThresholdFP);
-//            intent.putExtra("calmAlphaThresholdFP",calmAlphaThresholdFP);
-//            intent.putExtra("activeBetaThresholdFP",activeBetaThresholdFP);
-//            intent.putExtra("calmBetaThresholdFP",calmBetaThresholdFP);
-//            intent.putExtra("activeThetaThresholdFP",activeThetaThresholdFP);
-//            intent.putExtra("calmThetaThresholdFP",calmThetaThresholdFP);
-            muse.unregisterDataListener(dataListener, MuseDataPacketType.EEG);
-            muse.unregisterDataListener(dataListener, MuseDataPacketType.HSI_PRECISION);
-            muse.unregisterDataListener(dataListener, MuseDataPacketType.BETA_RELATIVE);
-            muse.unregisterDataListener(dataListener, MuseDataPacketType.THETA_RELATIVE);
-            muse.unregisterDataListener(dataListener, MuseDataPacketType.ALPHA_RELATIVE);
-            muse.unregisterDataListener(dataListener, MuseDataPacketType.ACCELEROMETER);
-            muse.unregisterDataListener(dataListener, MuseDataPacketType.BATTERY);
-            intent.putExtra("museName", muse.getName());
-            startActivity(intent);
+            nextActivityButton.setEnabled(true);
         }
     };
 
@@ -235,6 +221,10 @@ public class CalibrationActivity extends AppCompatActivity {
         manager.setContext(this);
         Intent i = getIntent();
         String museName = i.getStringExtra("museName");
+        String noOfMinutes = i.getStringExtra("noOfMinutes");
+        int index = noOfMinutes.indexOf(" ");
+        minutes = Integer.parseInt(noOfMinutes.substring(0,index));
+        currentMood = i.getStringExtra("currentMood");
         List<Muse> availableMuses = manager.getMuses();
         WeakReference<CalibrationActivity> weakActivity =
                 new WeakReference<CalibrationActivity> (this);
@@ -243,7 +233,7 @@ public class CalibrationActivity extends AppCompatActivity {
         for(Muse m:availableMuses) {
             if(m.getName().equals(museName)) {
                 this.muse = m;
-                Toast.makeText(getApplicationContext(), "muse found: " +m.getName(),Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getApplicationContext(), "muse found: " +m.getName(),Toast.LENGTH_SHORT).show();
                 muse.registerDataListener(dataListener, MuseDataPacketType.EEG);
                 muse.registerDataListener(dataListener, MuseDataPacketType.HSI_PRECISION);
                 muse.registerDataListener(dataListener, MuseDataPacketType.BETA_RELATIVE);
@@ -255,6 +245,27 @@ public class CalibrationActivity extends AppCompatActivity {
         }
 
 
+    }
+
+    public void showSessionActivity(View v) {
+        Intent intent = new Intent(getApplicationContext(), SessionActivity.class);
+        intent.putExtra("activeAlphaThreshold",activeAlphaThreshold);
+        intent.putExtra("calmAlphaThreshold",calmAlphaThreshold);
+        intent.putExtra("activeBetaThreshold",activeBetaThreshold);
+        intent.putExtra("calmBetaThreshold",calmBetaThreshold);
+        intent.putExtra("activeThetaThreshold",activeThetaThreshold);
+        intent.putExtra("calmThetaThreshold",calmThetaThreshold);
+        intent.putExtra("noOfMinutes",minutes+"");
+        intent.putExtra("currentMood",currentMood);
+        muse.unregisterDataListener(dataListener, MuseDataPacketType.EEG);
+        muse.unregisterDataListener(dataListener, MuseDataPacketType.HSI_PRECISION);
+        muse.unregisterDataListener(dataListener, MuseDataPacketType.BETA_RELATIVE);
+        muse.unregisterDataListener(dataListener, MuseDataPacketType.THETA_RELATIVE);
+        muse.unregisterDataListener(dataListener, MuseDataPacketType.ALPHA_RELATIVE);
+        muse.unregisterDataListener(dataListener, MuseDataPacketType.ACCELEROMETER);
+        muse.unregisterDataListener(dataListener, MuseDataPacketType.BATTERY);
+        intent.putExtra("museName", muse.getName());
+        startActivity(intent);
     }
 
     private final Runnable tickUi = new Runnable() {
@@ -317,7 +328,6 @@ public class CalibrationActivity extends AppCompatActivity {
         }
         TextView connectionStatus = (TextView) findViewById(R.id.connectionStatus);
         if(isPoor > 0) {
-            getSupportActionBar().setTitle("Calibration...");
             connectionStatus.setText("Try to adjust your headset, as we are getting poor connectivity...");
             nextButton.setEnabled(false);
             nextButton.setBackgroundColor(Color.parseColor("#acacac"));
@@ -333,7 +343,6 @@ public class CalibrationActivity extends AppCompatActivity {
             connectionStatus.setText("Your fit seems to be good... Do not move your headband now... Click Next");
             nextButton.setEnabled(true);
             nextButton.setBackgroundColor(Color.parseColor("#f5a623"));
-            getSupportActionBar().setTitle("Calibration...");
         }
 //       else if (isGood>2) {
 //            if (isMedium == 2) {
@@ -354,6 +363,14 @@ public class CalibrationActivity extends AppCompatActivity {
             isStartTimerOn = false;
             isCalibrationTimerStarted = false;
             stopTimer(countDownTimerActive);
+            MediaPlayer mediaPlayer = MediaPlayer.create(CalibrationActivity.this, R.raw.connection_lost);
+            mediaPlayer.start();
+            mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                                           @Override
+                                           public void onCompletion(MediaPlayer mediaPlayer) {
+                                               mediaPlayer.release();
+                                           }
+                                       });
             stopTimer(countDownTimerCalm);
             stopTimer(countDownTimerBreak);
             stopTimer(countDownTimerStart);
@@ -361,6 +378,9 @@ public class CalibrationActivity extends AppCompatActivity {
             headSetPrecisionLayout.setVisibility(View.VISIBLE);
             RelativeLayout calibrationLayout = (RelativeLayout) findViewById(R.id.calibrationLayout);
             calibrationLayout.setVisibility(View.INVISIBLE);
+            SeekBar seekBar = (SeekBar) findViewById(R.id.progressIndicator);
+            seekBar.setProgress(6);
+            getSupportActionBar().setTitle("Headset Connection");
         }
     }
 
@@ -382,11 +402,27 @@ public class CalibrationActivity extends AppCompatActivity {
             SeekBar seekBar = (SeekBar) findViewById(R.id.progressIndicator);
             seekBar.setProgress(6);
             // calibration part 1 starts in 3...2...1... (think about your day or let your mind wander)
-            MediaPlayer mp = MediaPlayer.create(CalibrationActivity.this, R.raw.calibration_starts);
+            final MediaPlayer mp = MediaPlayer.create(CalibrationActivity.this, R.raw.before_calibration);
             mp.start();
-            startTimer(countDownTimerStart);
-            isStartTimerOn = true;
-            isCalibrationTimerStarted = true;
+            getSupportActionBar().setTitle("Calibration...");
+            mp.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                @Override
+                public void onCompletion(MediaPlayer mediaPlayer) {
+                    mp.release();
+                    final MediaPlayer mp2 = MediaPlayer.create(CalibrationActivity.this, R.raw.calibration_begins);
+                    mp2.start();
+                    mp2.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                                                    @Override
+                                                    public void onCompletion(MediaPlayer mediaPlayer) {
+                                                        mp2.release();
+                                                    }
+                                                });
+                    startTimer(countDownTimerStart);
+                    isStartTimerOn = true;
+                    isCalibrationTimerStarted = true;
+                }
+            });
+
         }
     }
 
@@ -506,7 +542,7 @@ public class CalibrationActivity extends AppCompatActivity {
         }
     }
 
-    public void calculateAverageBetaValues() {
+   /* public void calculateAverageBetaValues() {
         Double avg_eeg1 = 0.0;
         Double avg_eeg2 = 0.0;
         Double avg_eeg3 = 0.0;
@@ -550,7 +586,7 @@ public class CalibrationActivity extends AppCompatActivity {
         intent.putExtra("eeg4",avg_eeg4);
         intent.putExtra("museName", this.muse.getName());
         startActivity(intent);
-    }
+    }*/
 
     public void computeThresholds() {
         computeAlphaThresholds();

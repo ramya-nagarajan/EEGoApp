@@ -16,6 +16,8 @@ import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.choosemuse.libmuse.MuseDataPacketType;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
@@ -42,11 +44,6 @@ public class WelcomeActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
     }
 
-    public void showConnectionActivity(View view) {
-        Intent intent = new Intent(getApplicationContext(), ConnectionActivity.class);
-        startActivity(intent);
-    }
-
     public void showPlansActivity(View view) {
         TextView textView = (TextView) view;
         Intent intent = new Intent(getApplicationContext(), DisplayPlansActivity.class);
@@ -54,15 +51,26 @@ public class WelcomeActivity extends AppCompatActivity
         startActivity(intent);
     }
 
-    public void showCommunityChallengeActivity(View view) {
-        Intent intent = new Intent(getApplicationContext(), CommunityChallengeActivity.class);
+    public void showSessionActivity(View v) {
+        Intent intent = new Intent(getApplicationContext(), SessionActivity.class);
+        intent.putExtra("activeAlphaThreshold",0);
+        intent.putExtra("calmAlphaThreshold",0);
+        intent.putExtra("activeBetaThreshold",0);
+        intent.putExtra("calmBetaThreshold",0);
+        intent.putExtra("activeThetaThreshold",0);
+        intent.putExtra("calmThetaThreshold",0);
+        intent.putExtra("noOfMinutes",0+"");
+        intent.putExtra("currentMood","happy");
+        intent.putExtra("museName", "Muse-3B50");
         startActivity(intent);
     }
 
-    public void showProgressActivity(View view) {
-        Intent intent = new Intent(getApplicationContext(), OverallProgressActivity.class);
+    public void showCommunityChallengeActivity(View view) {
+        Intent intent = new Intent(getApplicationContext(), CommunityChallengeActivity.class);
+        intent.putExtra("calmPoints", "100");
         startActivity(intent);
     }
+
 
     @Override
     public void onBackPressed() {
@@ -81,68 +89,6 @@ public class WelcomeActivity extends AppCompatActivity
         return true;
     }
 
-//    public void writeFile(View v) {
-//        List<List<Double>> alphaList = new ArrayList<>();
-//        List<Double> alphabuffer = new ArrayList();
-//        alphabuffer.add(5.0);
-//        alphabuffer.add(10.0);
-//        alphabuffer.add(20.0);
-//        alphabuffer.add(30.0);
-//        alphaList.add(alphabuffer);
-//        alphabuffer = new ArrayList();
-//        alphabuffer.add(35.0);
-//        alphabuffer.add(40.0);
-//        alphabuffer.add(45.0);
-//        alphabuffer.add(50.0);
-//        alphaList.add(alphabuffer);
-////        File sdCard = Environment.getExternalStorageDirectory();
-////        File dir = getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS);
-//        // Get the directory for the user's public pictures directory.
-//        File dir = new File(Environment.getExternalStoragePublicDirectory(
-//                Environment.DIRECTORY_DOWNLOADS), "muse");
-//        if(!dir.exists()) {
-//            dir.mkdirs();
-//        }
-//
-//        File file = new File(dir, "test.txt");
-////        if(!file.exists()) {
-////            try {
-////                file.createNewFile();
-////            } catch(Exception e) {
-////                e.printStackTrace();
-////            }
-////        }
-//        try {
-//            FileOutputStream f = new FileOutputStream(file);
-//            f.write("10.0, 20.0,30.0".getBytes());
-//            f.close();
-//        }catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//        /*final File dir = getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS);
-//        final File file = new File(dir, "alpha_values.csv" );
-//            *//*if (file.exists()) {
-//                file.delete();
-//            }*//*
-//        FileWriter fileWriter = null;
-//        try {
-//            fileWriter = new FileWriter(file);
-//            for (List l : alphaList) {
-//                StringBuilder sb = new StringBuilder();
-//                sb.append(l.get(0) + "," + l.get(1) + ","+l.get(2)+","+l.get(3));
-//                sb.append("\n");
-//                fileWriter.append(sb.toString());
-//            }
-//        } catch(Exception e) {
-//            Toast.makeText(getApplicationContext(), "Cannot store data", Toast.LENGTH_SHORT).show();
-//        }
-//        try {
-//            fileWriter.close();
-//        } catch (Exception e2) {
-//            Toast.makeText(getApplicationContext(), "Error occured", Toast.LENGTH_SHORT).show();
-//        }*/
-//
-//    }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will

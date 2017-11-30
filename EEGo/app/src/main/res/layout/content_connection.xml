@@ -115,8 +115,16 @@
             android:text="Connect Headset"
             android:textAllCaps="false"
             android:textColor="#ffffff"
-            android:onClick="showMuseHeadSets"
             android:textSize="14sp" />
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/connectButton"
+            android:layout_marginTop="15dp"
+            android:visibility="invisible"
+            android:layout_centerHorizontal="true"/>
 
         <Button
             android:id="@+id/startButton"
