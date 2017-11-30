@@ -27,12 +27,23 @@ public class PlanInformationActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.back_white);
 
+        Intent intent = getIntent();
+        if (null != intent) {
+
+            String txt = intent.getStringExtra("planSelected");
+            //Toast.makeText(getApplicationContext(), txt, Toast.LENGTH_SHORT).show();
+            toolbar.setTitle(txt);
+            setSupportActionBar(toolbar);
+
+        }
+
     }
 
     public void showConnectionActivity(View view) {
         Intent intent = new Intent(getApplicationContext(), ConnectionActivity.class);
         startActivity(intent);
     }
+
 
 
     @Override

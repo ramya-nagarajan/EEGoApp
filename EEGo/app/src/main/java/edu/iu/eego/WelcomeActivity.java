@@ -71,6 +71,10 @@ public class WelcomeActivity extends AppCompatActivity
         startActivity(intent);
     }
 
+    public void showFeedbackActivity(View view) {
+        Intent intent = new Intent(getApplicationContext(), FeedbackActivity.class);
+        startActivity(intent);
+    }
 
     @Override
     public void onBackPressed() {

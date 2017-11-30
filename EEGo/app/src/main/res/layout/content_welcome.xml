@@ -85,7 +85,7 @@
                 android:textSize="16sp"
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="5dp"
-                android:onClick="showPlansActivity"
+                android:onClick="showFeedbackActivity"
                 />
             <TextView
                 android:id="@+id/sleepBetterText"

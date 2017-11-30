@@ -26,7 +26,7 @@
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/editText2"
+        android:id="@+id/dateText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView2"
@@ -41,8 +41,8 @@
         android:id="@+id/progress"
         android:layout_width="60dp"
         android:layout_height="250dp"
-        android:layout_marginTop="20dp"
-        android:layout_below="@id/editText2"
+        android:layout_marginTop="30dp"
+        android:layout_below="@id/dateText"
         android:layout_centerHorizontal="true"
         android:background="@drawable/community"
         />
@@ -62,15 +62,15 @@
             android:text="+400"
             android:textColor="#ffffff"
             android:id="@+id/secondsProgress"
-            android:layout_marginLeft="230dp"
-            android:layout_marginTop="230dp"
+            android:layout_marginLeft="170dp"
+            android:layout_marginTop="85dp"
             android:layout_alignTop="@+id/item2"/>
 
         <TextView
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:id="@+id/calmChallengetext"
-            android:text="Challenge: 50,000 calm seconds"
+            android:text="Challenge: 50,000 calm points"
             android:textSize="18sp"
             android:textColor="#ffffff"
             android:layout_marginTop="21dp"

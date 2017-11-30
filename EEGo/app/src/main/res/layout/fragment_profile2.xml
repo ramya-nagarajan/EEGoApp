@@ -19,10 +19,7 @@
         <!--tools:layout_constraintLeft_creator="1"-->
         <!--tools:layout_constraintTop_creator="1" />-->
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fillViewport="true">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -38,14 +35,18 @@
                     android:layout_width="match_parent"
                     android:visibility="visible"
                     android:id="@+id/allDaysView"
-                    android:layout_height="match_parent"></RelativeLayout>
+                    android:layout_height="match_parent">
+
+                </RelativeLayout>
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:visibility="invisible"
                     android:id="@+id/dayDetails"
                     android:layout_height="match_parent"
-                    android:background="@drawable/dark_face_bkd"></RelativeLayout>
+                    android:background="@drawable/dark_face_bkd">
+
+                </RelativeLayout>
             </RelativeLayout>
         </LinearLayout>
-    </ScrollView>
+
 </android.support.constraint.ConstraintLayout>

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="edu.iu.eego.FeedbackActivity"
+    tools:showIn="@layout/activity_feedback">
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/dark_face_bkd">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="How do you feel?"
+        android:textColor="#ffffff"
+        android:layout_marginLeft="65dp"
+        android:layout_marginTop="60dp"
+        android:textSize="18sp"
+        android:id="@+id/moodQuestion"/>
+    <SeekBar
+        android:id="@+id/currentMoodFeedback"
+        android:layout_width="240dp"
+        android:layout_height="30dp"
+        android:layout_below="@+id/moodQuestion"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dp"
+        android:backgroundTint="#420000"
+        android:thumbTint="#f5a623"
+        tools:layout_editor_absoluteX="60dp" />
+
+    <TextView
+        android:id="@+id/currentMood"
+        android:layout_width="90dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/currentMoodFeedback"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="220dp"
+        android:text="Happy"
+        android:textAlignment="center"
+        android:textColor="#ffffff"
+        android:textSize="12sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/onYourMind"
+        android:text="What's on your mind?"
+        android:textSize="12sp"
+        android:layout_below="@+id/moodQuestion"
+        android:layout_marginTop="133dp"
+        android:layout_marginLeft="16dp"
+        android:textColor="#ffffff"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/moodDesc"
+        android:text="Today I..."
+        android:textSize="16sp"
+        android:layout_below="@+id/onYourMind"
+        android:textColor="#b6b6b6"
+        android:layout_marginTop="7dp"
+        android:layout_marginLeft="16dp"
+        />
+
+    <EditText
+        android:layout_width="328dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:singleLine="false"
+        android:textColor="#f5a623"
+        android:backgroundTint="#f5a623"
+        android:layout_marginTop="50dp"
+        android:layout_below="@+id/moodDesc"
+        />
+    
+    <Button
+        android:layout_width="94dp"
+        android:layout_height="36dp"
+        android:text="Submit"
+        android:textAllCaps="false"
+        android:textColor="#ffffff"
+        android:textSize="14sp"
+        android:background="#f5a623"
+        android:layout_below="@+id/moodDesc"
+        android:layout_marginTop="158dp"
+        android:layout_marginLeft="133dp"
+        android:onClick="addToDB"/>
+
+
+</RelativeLayout>
+</android.support.constraint.ConstraintLayout>
