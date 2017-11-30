@@ -18,6 +18,7 @@ public class PlanInformationActivity extends AppCompatActivity {
 
     public static int scrollX = 0;
     public static int scrollY = -1;
+    String planSelected = "";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,9 +31,9 @@ public class PlanInformationActivity extends AppCompatActivity {
         Intent intent = getIntent();
         if (null != intent) {
 
-            String txt = intent.getStringExtra("planSelected");
+            planSelected = intent.getStringExtra("planSelected");
             //Toast.makeText(getApplicationContext(), txt, Toast.LENGTH_SHORT).show();
-            toolbar.setTitle(txt);
+            toolbar.setTitle(planSelected);
             setSupportActionBar(toolbar);
 
         }
@@ -41,6 +42,7 @@ public class PlanInformationActivity extends AppCompatActivity {
 
     public void showConnectionActivity(View view) {
         Intent intent = new Intent(getApplicationContext(), ConnectionActivity.class);
+        intent.putExtra("planSelected", planSelected);
         startActivity(intent);
     }
 

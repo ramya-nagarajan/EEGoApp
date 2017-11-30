@@ -14,6 +14,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -97,6 +98,8 @@ public class SessionActivity extends AppCompatActivity {
     private int secondsLeft = 0;
     private int minutesLeft = 0;
 
+    private String planSelected = "";
+
     private CountDownTimer countDownTimerSession = new CountDownTimer(180000, 1000) {
         @Override
         public void onTick(long millisUntilFinished) {
@@ -164,6 +167,8 @@ public class SessionActivity extends AppCompatActivity {
                 }
             });
             timeRemaining.setText(String.format("%d:%02d", 0, 0));
+            muse.unregisterAllListeners();
+            muse.disconnect();
             hasSessionStarted = false;
             performAnalysis();
 
@@ -217,13 +222,13 @@ public class SessionActivity extends AppCompatActivity {
         Log.i("SessionActivity", "num of recoveries: "+ numRecoveryTimes);
         Log.i("SessionActivity", "calm points: "+ calmPoints);
 
-        Toast.makeText(context, "calmSeconds:" + calmSeconds, Toast.LENGTH_SHORT).show();
-        Toast.makeText(context, "neutralSeconds:" + neutralSeconds, Toast.LENGTH_SHORT).show();
-        Toast.makeText(context, "activeSeconds:" + activeSeconds, Toast.LENGTH_SHORT).show();
-        Toast.makeText(context, "numRecoveryTimes:" + numRecoveryTimes, Toast.LENGTH_SHORT).show();
-        Toast.makeText(context, "calmPoints:" + calmPoints, Toast.LENGTH_SHORT).show();
+//        Toast.makeText(context, "calmSeconds:" + calmSeconds, Toast.LENGTH_SHORT).show();
+//        Toast.makeText(context, "neutralSeconds:" + neutralSeconds, Toast.LENGTH_SHORT).show();
+//        Toast.makeText(context, "activeSeconds:" + activeSeconds, Toast.LENGTH_SHORT).show();
+//        Toast.makeText(context, "numRecoveryTimes:" + numRecoveryTimes, Toast.LENGTH_SHORT).show();
+//        Toast.makeText(context, "calmPoints:" + calmPoints, Toast.LENGTH_SHORT).show();
 
-        showProgressActivity(alphaSecondsList,calmSeconds,numRecoveryTimes, calmPoints, (calmSeconds + neutralSeconds + activeSeconds));
+        showFeedbackActivity(alphaSecondsList,calmSeconds,numRecoveryTimes, calmPoints, (calmSeconds + neutralSeconds + activeSeconds));
 
     }
 
@@ -235,25 +240,34 @@ public class SessionActivity extends AppCompatActivity {
             int  index2 = s.indexOf("AAAN");
             if(index == -1 && index2 == -1) {
                 break;
-            } else {
+            } else if(index > -1 && index2 > -1) {
                 if(index > index2) {
                     s = s.substring(0,index2);
                 } else {
                     s = s.substring(0,index);
                 }
                 recoveries++;
+            } else if(index > -1) {
+                s = s.substring(0,index);
+                recoveries++;
+            } else if(index2 > -1){
+                s = s.substring(0,index2);
+                recoveries++;
             }
         }
         return recoveries;
     }
 
-    public void showProgressActivity(ArrayList<Double> alphaList, int calmSeconds, int recoveries, int calmPoints, int totalSeconds) {
-        Intent intent = new Intent(getApplicationContext(), OverallProgressActivity.class);
+    public void showFeedbackActivity(ArrayList<Double> alphaList, int calmSeconds, int recoveries, int calmPoints, int totalSeconds) {
+        Intent intent = new Intent(getApplicationContext(), FeedbackActivity.class);
         intent.putExtra("calmSeconds", calmSeconds+"");
         intent.putExtra("recoveries", recoveries+"");
         intent.putExtra("totalSeconds", totalSeconds+"");
         intent.putExtra("calmPoints", calmPoints+"");
         intent.putExtra("alphaList", alphaList);
+        intent.putExtra("planSelected",planSelected);
+        intent.putExtra("noOfMinutes",minutes);
+        intent.putExtra("currentMood", currentMood);
         startActivity(intent);
     }
 
@@ -266,15 +280,16 @@ public class SessionActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.back_white);
-        manager = MuseManagerAndroid.getInstance();
+        manager = MuseManagerAndroid.getInstance()
         manager.setContext(this);
         Intent i = getIntent();
         String museName = i.getStringExtra("museName");
+        planSelected = i.getStringExtra("planSelected");
         minutes = Integer.parseInt(i.getStringExtra("noOfMinutes"));
         currentMood = i.getStringExtra("currentMood");
 
-        Toast.makeText(context, "minutes:"+ minutes, Toast.LENGTH_SHORT).show();
-        Toast.makeText(context, "currentMood:"+ currentMood, Toast.LENGTH_SHORT).show();
+//        Toast.makeText(context, "minutes:"+ minutes, Toast.LENGTH_SHORT).show();
+//        Toast.makeText(context, "currentMood:"+ currentMood, Toast.LENGTH_SHORT).show();
 
         activeAlphaThreshold = i.getDoubleExtra("activeAlphaThreshold",0.0);
         calmAlphaThreshold = i.getDoubleExtra("calmAlphaThreshold",0.0);
@@ -503,6 +518,8 @@ public class SessionActivity extends AppCompatActivity {
                 muse.unregisterDataListener(dataListener, MuseDataPacketType.BATTERY);
                 muse.unregisterDataListener(dataListener, MuseDataPacketType.DRL_REF);
                 muse.unregisterDataListener(dataListener, MuseDataPacketType.QUANTIZATION);
+                muse.unregisterAllListeners();
+                muse.disconnect();
                 timeRemaining.setText(String.format("%d:%02d", 0, 0));
                 performAnalysis();
             }
@@ -619,4 +636,12 @@ public class SessionActivity extends AppCompatActivity {
         }
     }
 
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            Button b = (Button) findViewById(R.id.pauseButton);
+            pauseSession(b);
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
+    }
 }

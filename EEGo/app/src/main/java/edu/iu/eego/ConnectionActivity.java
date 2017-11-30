@@ -78,6 +78,8 @@ public class ConnectionActivity extends AppCompatActivity implements View.OnClic
 
     private ConnectionListener connectionListener;
 
+    String planSelected = "";
+
 
     public void receiveMuseConnectionPacket(final MuseConnectionPacket p, final Muse muse) {
 
@@ -109,6 +111,7 @@ public class ConnectionActivity extends AppCompatActivity implements View.OnClic
                     intent.putExtra("museName", muse.getName());
                     intent.putExtra("noOfMinutes",minutes);
                     intent.putExtra("currentMood",mood);
+                    intent.putExtra("planSelected", planSelected);
                     startActivity(intent);
 
                 }
@@ -279,6 +282,7 @@ public class ConnectionActivity extends AppCompatActivity implements View.OnClic
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.back_white);
         Button button = (Button) findViewById(R.id.connectButton);
         SeekBar seekBar = (SeekBar) findViewById(R.id.sessionLengthSeekBar);
+        planSelected = getIntent().getStringExtra("planSelected");
         seekBar.setProgress(0);
         seekBar.setMax(17);
         final TextView noOfMinutes = (TextView)findViewById(R.id.noOfMinutes);
@@ -306,7 +310,7 @@ public class ConnectionActivity extends AppCompatActivity implements View.OnClic
         seekBar2.setProgress(0);
         seekBar2.setMax(9);
         final TextView currentMoodView = (TextView)findViewById(R.id.currentMoodView);
-        currentMoodView.setText("Happy");
+        currentMoodView.setText("Loving");
         seekBar2.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
 
             @Override
@@ -405,8 +409,10 @@ public class ConnectionActivity extends AppCompatActivity implements View.OnClic
                     public void onClick(View v) {
                         dialog.dismiss();
                         manager.stopListening();
+
                         muse.unregisterAllListeners();
                         muse.disconnect();
+
                         onBackPressed();
                     }
                 });

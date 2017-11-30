@@ -65,6 +65,18 @@ public class WelcomeActivity extends AppCompatActivity
         startActivity(intent);
     }
 
+    public void showProgressActivity(View view) {
+        ArrayList<Double> alphaList = new ArrayList<Double>();
+        alphaList.add(3.0);
+        Intent intent = new Intent(getApplicationContext(), OverallProgressActivity.class);
+        intent.putExtra("calmSeconds", 50+"");
+        intent.putExtra("recoveries", 50+"");
+        intent.putExtra("totalSeconds", 10+"");
+        intent.putExtra("calmPoints", 20+"");
+        intent.putExtra("alphaList", alphaList);
+        startActivity(intent);
+    }
+
     public void showCommunityChallengeActivity(View view) {
         Intent intent = new Intent(getApplicationContext(), CommunityChallengeActivity.class);
         intent.putExtra("calmPoints", "100");
@@ -72,7 +84,14 @@ public class WelcomeActivity extends AppCompatActivity
     }
 
     public void showFeedbackActivity(View view) {
+        ArrayList<Double> alphaList = new ArrayList<Double>();
+        alphaList.add(3.0);
         Intent intent = new Intent(getApplicationContext(), FeedbackActivity.class);
+        intent.putExtra("calmSeconds", 50+"");
+        intent.putExtra("recoveries", 50+"");
+        intent.putExtra("totalSeconds", 10+"");
+        intent.putExtra("calmPoints", 20+"");
+        intent.putExtra("alphaList", alphaList);
         startActivity(intent);
     }
 
@@ -117,13 +136,12 @@ public class WelcomeActivity extends AppCompatActivity
 
 
         if (id == R.id.nav_home) {
-
-        } else if (id == R.id.nav_progress) {
-
-        } else if (id == R.id.nav_plans) {
-
-        } else if (id == R.id.nav_progress) {
-
+            Intent intent = new Intent(getApplicationContext(), WelcomeActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+        } else if (id == R.id.nav_profile) {
+            Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
+            startActivity(intent);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

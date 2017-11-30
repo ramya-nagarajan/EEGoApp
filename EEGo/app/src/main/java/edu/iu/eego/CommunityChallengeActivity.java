@@ -15,12 +15,15 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class CommunityChallengeActivity extends AppCompatActivity {
+import org.w3c.dom.Text;
 
+public class CommunityChallengeActivity extends AppCompatActivity {
+    EEGDatabaseHelper eegDatabaseHelper;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_community_challenge);
+        eegDatabaseHelper = new EEGDatabaseHelper(getApplicationContext());
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -29,8 +32,14 @@ public class CommunityChallengeActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String calmPoints = intent.getStringExtra("calmPoints");
         int points_earned = Integer.parseInt(calmPoints);
-        points_earned = 300;
         int points_prev = 30000;
+        Community c = eegDatabaseHelper.fetchCommunityFromDB();
+        if(c.getId() == 1) {
+            points_prev = Integer.parseInt(c.getCalmPoints());
+            c.setCalmPoints(points_earned+points_prev+"");
+            eegDatabaseHelper.updateCommunityInfo(c);
+        }
+
         int new_total = points_earned + points_prev;
         int total_minus_points_earned = total_points - new_total;
         int total_minus_prev_earned_points = total_points - points_prev;
@@ -46,7 +55,22 @@ public class CommunityChallengeActivity extends AppCompatActivity {
         community.setLayerInset(2,0,(int)px2,0,0);
         ImageView imageView = (ImageView) findViewById(R.id.progress);
         imageView.setBackground(community);
+        TextView calmSeconds = (TextView) findViewById(R.id.calmSeconds);
+        calmSeconds.setText(new_total+  "/" + total_points);
 
     }
 
+    public void showWelcomeActivity(View v) {
+        Intent intent = new Intent(getApplicationContext(), WelcomeActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(getApplicationContext(), WelcomeActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
+    }
 }

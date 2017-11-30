@@ -8,14 +8,14 @@
     tools:context="edu.iu.eego.FeedbackActivity"
     tools:showIn="@layout/activity_feedback">
 <RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     android:background="@drawable/dark_face_bkd">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="How do you feel?"
+        android:text="How do you feel now?"
         android:textColor="#ffffff"
         android:layout_marginLeft="65dp"
         android:layout_marginTop="60dp"
@@ -76,6 +76,7 @@
         android:textColor="#f5a623"
         android:backgroundTint="#f5a623"
         android:layout_marginTop="50dp"
+        android:id="@+id/moodDescription"
         android:layout_below="@+id/moodDesc"
         />
     

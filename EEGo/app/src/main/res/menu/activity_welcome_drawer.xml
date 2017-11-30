@@ -7,14 +7,6 @@
 
             android:title="Home" />
         <item
-            android:id="@+id/nav_progress"
-
-            android:title="Your Progress" />
-        <item
-            android:id="@+id/nav_plans"
-
-            android:title="Your Plans" />
-        <item
             android:id="@+id/nav_profile"
 
             android:title="Profile" />

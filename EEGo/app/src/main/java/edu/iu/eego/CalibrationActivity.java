@@ -1,5 +1,6 @@
 package edu.iu.eego;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -10,6 +11,7 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
@@ -71,6 +73,12 @@ public class CalibrationActivity extends AppCompatActivity {
     private Double activeThetaThresholdFP;
     private int minutes = 1;
     private String currentMood = "Happy";
+
+    private boolean isMediaPlayerReleased = false;
+
+    MediaPlayer mediaPlayerInstructions;
+
+    String planSelected = "";
 
 
     private CountDownTimer countDownTimerStart = new CountDownTimer(5000, 1000) {
@@ -225,6 +233,7 @@ public class CalibrationActivity extends AppCompatActivity {
         int index = noOfMinutes.indexOf(" ");
         minutes = Integer.parseInt(noOfMinutes.substring(0,index));
         currentMood = i.getStringExtra("currentMood");
+        planSelected = i.getStringExtra("planSelected");
         List<Muse> availableMuses = manager.getMuses();
         WeakReference<CalibrationActivity> weakActivity =
                 new WeakReference<CalibrationActivity> (this);
@@ -244,6 +253,15 @@ public class CalibrationActivity extends AppCompatActivity {
             }
         }
 
+        mediaPlayerInstructions = MediaPlayer.create(CalibrationActivity.this, R.raw.headband_instructions);
+        mediaPlayerInstructions.start();
+        mediaPlayerInstructions.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mediaPlayer) {
+                isMediaPlayerReleased = true;
+                mediaPlayerInstructions.release();
+            }
+        });
 
     }
 
@@ -257,6 +275,7 @@ public class CalibrationActivity extends AppCompatActivity {
         intent.putExtra("calmThetaThreshold",calmThetaThreshold);
         intent.putExtra("noOfMinutes",minutes+"");
         intent.putExtra("currentMood",currentMood);
+        intent.putExtra("planSelected",planSelected);
         muse.unregisterDataListener(dataListener, MuseDataPacketType.EEG);
         muse.unregisterDataListener(dataListener, MuseDataPacketType.HSI_PRECISION);
         muse.unregisterDataListener(dataListener, MuseDataPacketType.BETA_RELATIVE);
@@ -393,6 +412,11 @@ public class CalibrationActivity extends AppCompatActivity {
     }
 
     public void switchViewsToCalibration(View v) {
+        if(!isMediaPlayerReleased) {
+            if(mediaPlayerInstructions.isPlaying()) {
+                mediaPlayerInstructions.stop();
+            }
+        }
         Button nextButton = (Button) v;
         if(nextButton.isEnabled()) {
             RelativeLayout headSetPrecisionLayout = (RelativeLayout) findViewById(R.id.headSetPrecisionLayout);
@@ -432,7 +456,7 @@ public class CalibrationActivity extends AppCompatActivity {
         switch (p.packetType()) {
             case HSI_PRECISION:
                 getHSIPrecisionValues(p);
-                hsiPrecisionStale = true;
+                Log.i("Calibration: ","packet recevied");hsiPrecisionStale = true;
                 break;
             case ACCELEROMETER:
                 getAccelValues(p);
@@ -489,8 +513,9 @@ public class CalibrationActivity extends AppCompatActivity {
                 }
                 break;
             case BATTERY:
-            /*case DRL_REF:
-            case QUANTIZATION:*/
+case DRL_REF:
+            case QUANTIZATION:
+
             default:
                 break;
         }
@@ -542,7 +567,7 @@ public class CalibrationActivity extends AppCompatActivity {
         }
     }
 
-   /* public void calculateAverageBetaValues() {
+ public void calculateAverageBetaValues() {
         Double avg_eeg1 = 0.0;
         Double avg_eeg2 = 0.0;
         Double avg_eeg3 = 0.0;
@@ -586,7 +611,8 @@ public class CalibrationActivity extends AppCompatActivity {
         intent.putExtra("eeg4",avg_eeg4);
         intent.putExtra("museName", this.muse.getName());
         startActivity(intent);
-    }*/
+    }
+
 
     public void computeThresholds() {
         computeAlphaThresholds();
@@ -795,4 +821,20 @@ public class CalibrationActivity extends AppCompatActivity {
     }
 
 
+   /* public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+//            manager.stopListening();
+//            muse.unregisterAllListeners();
+//            muse.disconnect();
+            stopTimer(countDownTimerActive);
+            stopTimer(countDownTimerCalm);
+            stopTimer(countDownTimerBreak);
+            stopTimer(countDownTimerStart);
+            if(mediaPlayerInstructions.isPlaying()) {
+                mediaPlayerInstructions.stop();
+            }
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
+    }*/
 }
