@@ -19,10 +19,7 @@
         <!--tools:layout_constraintLeft_creator="1"-->
         <!--tools:layout_constraintTop_creator="1" />-->
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fillViewport="true">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -51,5 +48,5 @@
                 </RelativeLayout>
             </RelativeLayout>
         </LinearLayout>
-    </ScrollView>
+
 </android.support.constraint.ConstraintLayout>

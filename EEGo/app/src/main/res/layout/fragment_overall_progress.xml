@@ -11,6 +11,12 @@
         android:layout_height="wrap_content"
         android:background="@drawable/dark_face_bkd"
         android:id="@+id/showprogress">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="192dp"
+            android:id="@+id/graphHR"
+            android:src="@drawable/heartrategraph"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

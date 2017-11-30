@@ -25,11 +25,11 @@ public class DiaryActivity extends Fragment {
 
     static int id =1;
     TextView text1;
-    TextView date_text;
-    TextView before;
-    TextView moodBefore;
-    TextView after;
-    TextView moodAfter;
+    TextView date_text,date_diary;
+    TextView before,before_diary;
+    TextView moodBefore,moodBefore_diary;
+    TextView after,after_diary;
+    TextView moodAfter,moodAfter_diary;
     TextView desc;
     TextView showDayDescription;
     TextView hideDayDescription;
@@ -119,7 +119,43 @@ public class DiaryActivity extends Fragment {
         header.setText("A Life of Calm-Day 4");
         header.setTextColor(Color.parseColor("#ffffff"));
         header.setTextSize(18);
-        header.setPadding(200,60,138,10);
+        header.setPadding(200,60,0,0);
+
+        date_diary = new TextView(rootView.getContext());
+        date_diary.setTextSize(10);
+        date_diary.setTextColor(Color.parseColor("#ffffff"));
+        date_diary.setText("November 22,2017");
+        date_diary.setPadding(200,160,0,0);
+        date_diary.generateViewId();
+//        params.addRule(RelativeLayout.BELOW, header.getId());
+        date_diary.setLayoutParams(params);
+
+
+        before_diary = new TextView(rootView.getContext());
+        before_diary.setTextSize(10);
+        before_diary.setTextColor(Color.parseColor("#ffffff"));
+        before_diary.setText("Before: ");
+        before_diary.setPadding(200,210,138,10);
+
+        moodBefore_diary = new TextView(rootView.getContext());
+        moodBefore_diary.setTextSize(10);
+        moodBefore_diary.setTextColor(Color.parseColor("#ffffff"));
+        moodBefore_diary.setText("Frustrated");
+        moodBefore_diary.setPadding(310,210,0,10);
+
+        after_diary = new TextView(rootView.getContext());
+        after_diary.setTextSize(10);
+        after_diary.setTextColor(Color.parseColor("#ffffff"));
+        after_diary.setText("After: ");
+        after_diary.setPadding(200,260,138,10);
+
+        moodAfter_diary = new TextView(rootView.getContext());
+        moodAfter_diary.setTextSize(10);
+        moodAfter_diary.setTextColor(Color.parseColor("#ffffff"));
+        moodAfter_diary.setText("Relaxed");
+        moodAfter_diary.setPadding(300,260,0,10);
+
+
 
         fullLengthDescription = new TextView(rootView.getContext());
         fullLengthDescription.setTextSize(12);
@@ -128,7 +164,7 @@ public class DiaryActivity extends Fragment {
                 "We're also making progress on our Mobile and Pervasive project, which is super exciting. It's been a great opportunity to learn how ot work alongside developers and learn about how they work."
         );
         fullLengthDescription.setTextColor(Color.parseColor("#ffffff"));
-        fullLengthDescription.setPadding(200,200,138,10);
+        fullLengthDescription.setPadding(200,320,138,10);
         hideDayDescription = new TextView(rootView.getContext());
         hideDayDescription.generateViewId();
         hideDayDescription.setText("<");
@@ -138,6 +174,11 @@ public class DiaryActivity extends Fragment {
         hideDayDescription.setClickable(true);
         relLayout2.addView(hideDayDescription);
         relLayout2.addView(header);
+        relLayout2.addView(date_diary);
+        relLayout2.addView(before_diary);
+        relLayout2.addView(moodBefore_diary);
+        relLayout2.addView(after_diary);
+        relLayout2.addView(moodAfter_diary);
         relLayout2.addView(fullLengthDescription);
         showDayDescription.setOnClickListener(new View.OnClickListener() {
             @Override

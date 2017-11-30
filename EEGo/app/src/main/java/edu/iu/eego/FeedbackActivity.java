@@ -8,6 +8,10 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 
 public class FeedbackActivity extends AppCompatActivity {
 
@@ -61,8 +65,7 @@ public class FeedbackActivity extends AppCompatActivity {
 
         }
         });
+    }
 
 
-
-}
 }

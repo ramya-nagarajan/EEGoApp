@@ -89,7 +89,8 @@
         android:background="#f5a623"
         android:layout_below="@+id/moodDesc"
         android:layout_marginTop="158dp"
-        android:layout_marginLeft="133dp"/>
+        android:layout_marginLeft="133dp"
+        android:onClick="addToDB"/>
 
 
 </RelativeLayout>

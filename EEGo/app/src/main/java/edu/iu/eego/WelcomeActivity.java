@@ -69,6 +69,8 @@ public class WelcomeActivity extends AppCompatActivity
         startActivity(intent);
     }
 
+
+
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
